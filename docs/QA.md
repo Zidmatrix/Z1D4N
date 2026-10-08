@@ -36,7 +36,8 @@ These show the **local production build**, not a deployed website:
 - The owner replaced the new-repository destination with the existing `Zidmatrix/Z1D4N`. The original commit is preserved and the portfolio source was migrated into that checkout.
 - Pages read/create requests and the repository visibility update were rejected with **Resource not accessible by integration** (HTTP 403). The repository remains private and `has_pages` remains false according to the repository API.
 - The GitHub Pages workflow was checked against current official documentation and action tags. The build has `contents: read` and `pages: read`; deployment has `pages: write` and `id-token: write`. Configure-pages enablement requires a separate appropriately authorized token, so that option is not used to bypass the missing administration permission.
-- Remote push and workflow outcomes are recorded after execution below. A local build does not establish successful deployment.
+- The source was pushed to `main` at `6b38a8be8360d8df6249cf102533428e4e41c2b2`. Remote run [37792572070](https://github.com/Zidmatrix/Z1D4N/actions/runs/37792572070) passed dependency installation, browser installation, production build and the test step. It failed at **Configure Pages** with **Not Found**, because Pages is not enabled. Artifact upload and deployment were skipped.
+- The actual `https://zidmatrix.github.io/Z1D4N/` request returned HTTP 404. No live site is claimed.
 - Other inspected repositories were left unchanged.
 
 ## Unverified / awaiting outside action

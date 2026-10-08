@@ -4,7 +4,7 @@ Last updated: 2026-10-08 (Africa/Cairo user date).
 
 ## Current state
 
-The owner explicitly selected the existing `Zidmatrix/Z1D4N` repository. The portfolio is now implemented and validated at `/workspace/Z1D4N`, with the original initial commit preserved and the prior implementation commits imported. The original independent local directory is a retained backup, not the active publishing target. Other existing repositories remain unchanged. **Pages publication has not succeeded yet.**
+The owner explicitly selected the existing `Zidmatrix/Z1D4N` repository. The portfolio is now implemented and validated at `/workspace/Z1D4N`, with the original initial commit preserved and the prior implementation commits imported. The original independent local directory is a retained backup, not the active publishing target. Other existing repositories remain unchanged. The implementation was pushed to remote `main` at `6b38a8be8360d8df6249cf102533428e4e41c2b2`. **Pages publication has not succeeded yet.**
 
 Actual repository: `https://github.com/Zidmatrix/Z1D4N`.
 
@@ -55,6 +55,10 @@ The site address remains a target until a deployment is verified. The repository
 - Canonical/SEO URLs, report/download URLs, the test server path and the portfolio repository link now match Z1D4N. The configure-pages build step has the required read permission; only the deployment job has write permissions.
 - Reproducible setup refresh and local development/production startup checked.
 
+## Remote validation
+
+GitHub Actions run [37792572070](https://github.com/Zidmatrix/Z1D4N/actions/runs/37792572070) checked out the pushed source, installed locked dependencies and the browser, built successfully, and passed the browser-test step. The run then failed at **Configure Pages** with **Not Found**, because a Pages site is not enabled. Upload was skipped and deployment did not run. The direct Pages URL returned HTTP 404. This is a settings blocker, not an unexplained build or application defect.
+
 ## External blocker
 
 The connected GitHub account is Zidmatrix. Repository and Actions-run reads work. Pages read/create and repository visibility updates were rejected as `Resource not accessible by integration` (HTTP 403). A reported administrator role does not give this integration those API permissions.
@@ -73,4 +77,4 @@ For the requested zero-cost deployment, the owner can open Z1D4N **Settings → 
 
 Read this log and QA first. Use `/workspace/Z1D4N` and its existing `origin`. Inspect the remote and current Actions runs; preserve the owner's changes and all local commits. After Pages settings are supplied, trigger the existing `pages.yml` workflow on main, inspect the actual run, test `https://zidmatrix.github.io/Z1D4N/`, then update the publication record and delivery links. Do not repeat the old request to create zidvn-portfolio; the owner has replaced that destination with Z1D4N.
 
-The current environment has Internet access and an active GitHub connection. Draft install/start instructions must use `/workspace/Z1D4N`. Configuration saves do not prove website publication or restoration in a new task.
+The current environment has Internet access and an active GitHub connection. The `install_script` and `start_skill` fields were saved as a draft using `/workspace/Z1D4N`. The draft needs environment review/save and publication to become active; this is separate from Pages deployment. Configuration saves do not prove website publication or restoration in a new task.
