@@ -1,0 +1,5 @@
+[
+  { "id": "network-training", "kind": "Training", "title": "Networking at IT Gate", "description": "Networking training alongside my technical studies. Detailed responsibilities and dates are awaiting supporting material.", "tags": ["Networking", "Training environment"] },
+  { "id": "system-use", "kind": "Practical use", "title": "Working across operating systems", "description": "Practical Linux and Windows use, including systems used by companies. Specific tasks and context have not yet been documented as employment experience.", "tags": ["Linux", "Windows", "Self-reported"] },
+  { "id": "university", "kind": "University", "title": "Engineering fundamentals in practice", "description": "Computer Science Engineering coursework with a 2026 Best Computer Graphics Project Award. The awarded project and its supporting artifacts will be added after review.", "tags": ["Computer Science", "Computer Graphics"] }
+]

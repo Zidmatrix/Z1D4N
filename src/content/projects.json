@@ -1,0 +1,34 @@
+[
+  {
+    "id": "ccna-roadmap",
+    "title": "CCNA Study Roadmap",
+    "subtitle": "A complex syllabus. A clearer daily plan.",
+    "summary": "An interactive study companion with daily plans, quizzes, flashcards, notes and browser-based progress storage.",
+    "category": "Networking",
+    "type": "Study application",
+    "status": "Public source reviewed",
+    "featured": true,
+    "visual": "roadmap",
+    "tools": ["HTML", "JavaScript", "localStorage"],
+    "repository": "https://github.com/Zidmatrix/ccna-30day-roadmap",
+    "report": "ccna-roadmap",
+    "evidence": "Source inspection confirms the interface and local progress functions. This is not evidence of completed CCNA labs.",
+    "contribution": "Individual contribution and AI assistance have not yet been documented for this existing repository."
+  },
+  {
+    "id": "portfolio",
+    "title": "Z!DVN / Technical Portfolio",
+    "subtitle": "A personal site built around inspectable work.",
+    "summary": "A static, accessible portfolio with content-driven projects, Markdown reports and an automated GitHub Pages workflow.",
+    "category": "Web Development",
+    "type": "Personal website",
+    "status": "Implementation available",
+    "featured": true,
+    "visual": "portfolio",
+    "tools": ["React", "TypeScript", "Vite"],
+    "repository": null,
+    "report": "portfolio",
+    "evidence": "Implementation and tests are included in this project. Publication status is recorded separately in the project log.",
+    "contribution": "I supplied the identity, factual content and project requirements. AI assisted the design, implementation, editing and test preparation; personal review is pending."
+  }
+]

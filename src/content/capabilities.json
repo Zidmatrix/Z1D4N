@@ -1,0 +1,30 @@
+[
+  {
+    "id": "security", "name": "Security foundations", "short": "Security", "index": "01", "icon": "shield",
+    "summary": "A security-first way of looking at systems.",
+    "description": "Security+ study and training labs provide a foundation for understanding threats, risk and defensive controls. Public lab reports will make the practical work reviewable.",
+    "tools": ["CompTIA Security+", "Training labs", "Security fundamentals"],
+    "level": "Certification + training labs", "evidence": "Security+ exam passed, as reported by me. Lab evidence is still being collected.", "project": null
+  },
+  {
+    "id": "networks", "name": "Networks & connectivity", "short": "Networks", "index": "02", "icon": "network",
+    "summary": "Understand the connections before the complexity.",
+    "description": "CCNA study, networking training at IT Gate, and a public CCNA study application. The application source is available; completed lab results are separate evidence.",
+    "tools": ["Cisco CCNA", "IT Gate training", "Network fundamentals"],
+    "level": "Certification + training", "evidence": "The CCNA study application can be inspected in my GitHub account.", "project": "ccna-roadmap"
+  },
+  {
+    "id": "systems", "name": "Linux & Windows", "short": "Systems", "index": "03", "icon": "cpu",
+    "summary": "Get comfortable with what runs underneath.",
+    "description": "Practical use of Linux and Windows, including Kali Linux, Ubuntu and Fedora. I describe my use as advanced; task-level evidence and system administration examples are the next documentation step.",
+    "tools": ["Kali Linux", "Ubuntu", "Fedora", "Windows"],
+    "level": "Self-assessed practical use", "evidence": "Specific administration tasks have not yet been published. Kali use does not imply professional penetration-testing experience.", "project": null
+  },
+  {
+    "id": "development", "name": "Code & the web", "short": "Development", "index": "04", "icon": "code",
+    "summary": "Turn technical ideas into usable interfaces.",
+    "description": "A programming background spanning Python, Java, C++, C#, HTML, CSS and JavaScript, alongside Computer Science coursework. Public web sources give reviewers a concrete starting point.",
+    "tools": ["Python", "Java", "C++", "C#", "HTML / CSS", "JavaScript"],
+    "level": "Coursework + public web projects", "evidence": "Review the source and implementation notes for this site and the CCNA study application.", "project": "portfolio"
+  }
+]

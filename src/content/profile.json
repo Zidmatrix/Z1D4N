@@ -1,0 +1,24 @@
+{
+  "name": "Abdulrahman Zidan",
+  "brand": "Z!DVN",
+  "title": "Computer Science Engineering student",
+  "focus": "Cybersecurity · Networking · Development",
+  "location": "Egypt",
+  "email": "abd3lra7manzidan@gmail.com",
+  "phone": "+201092637006",
+  "github": "https://github.com/Zidmatrix",
+  "linkedin": null,
+  "cv": null,
+  "portrait": "images/abdulrahman-zidan.webp",
+  "intro": "I’m Abdulrahman, a Computer Science Engineering student connecting security thinking with networks, systems and the software built on top of them.",
+  "about": "My focus is cybersecurity. My curiosity extends across the stack: how a network communicates, how an operating system behaves, and how software can make a complex problem easier to understand. I’m building a body of work that makes those connections visible.",
+  "education": {
+    "institution": "Modern Academy, Maadi",
+    "degree": "B.Sc. in Computer Science Engineering",
+    "period": "2024–Present",
+    "graduation": "2028",
+    "gpa": "3",
+    "award": "Best Computer Graphics Project Award — 2026",
+    "subjects": ["Data Structures", "Computer Architecture", "Digital Logic", "Assembly", "Mobile Development"]
+  }
+}

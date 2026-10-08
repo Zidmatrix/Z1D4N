@@ -1,0 +1,12 @@
+{
+  "professional": [
+    { "id": "security-plus", "name": "Security+", "issuer": "CompTIA", "mark": "S+", "focus": "Security foundations", "status": "Exam passed · owner reported", "verification": null },
+    { "id": "ccna", "name": "CCNA", "issuer": "Cisco", "mark": "CC", "focus": "Networking foundations", "status": "Exam passed · owner reported", "verification": null },
+    { "id": "a-plus", "name": "A+", "issuer": "CompTIA", "mark": "A+", "focus": "IT foundations", "status": "Exam passed · owner reported", "verification": null }
+  ],
+  "training": [
+    { "id": "it-gate", "name": "Networking training", "provider": "IT Gate", "detail": "Networking training, as reported by me. Dates and detailed scope will be added after review.", "evidence": "Owner reported · supporting material pending", "url": null },
+    { "id": "netriders", "name": "CompTIA Sec+ SY0-701 course", "provider": "NetRiders", "detail": "Course completion reported in the supplied brief. Name on the described certificate: Abdulrahman Mahmoud Zidan. Instructor: Ahmed Sultan.", "evidence": "Certificate image not supplied in this session", "url": null },
+    { "id": "security-labs", "name": "Security+ study labs", "provider": "Independent study", "detail": "Training exercises undertaken during Security+ study. Scope, artifacts and results will be added as individual reports.", "evidence": "Owner reported · public reports pending", "url": null }
+  ]
+}
