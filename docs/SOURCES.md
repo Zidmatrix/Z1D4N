@@ -12,6 +12,12 @@ Source checkouts of `A.Zidan`, `Abdul.Zidan`, `Abdulrahman-Zidan`, `Myweb` and `
 
 `public/images/abdulrahman-zidan.webp` is copied unchanged from the existing public `Zidmatrix/A.Zidan` repository at commit `a1aecc7aa0d2543344c633b026b3f92f404b9c41`, path `public/profile.webp`. That repository identifies it as the real owner portrait. It was visually inspected before use. No photograph, certificate image or CV was generated.
 
+## Technical CV
+
+The owner uploaded `Abdulrahman_Zidan_Junior_Penetration_Tester_CV.pdf` on 2026-10-08 and explicitly requested that it be added to the website. It is stored unchanged at `public/downloads/Abdulrahman_Zidan_Junior_Penetration_Tester_CV.pdf`; the profile record controls its download link. The file was opened and visually inspected. It is an owner-supplied resume, not independent verification of every statement in it.
+
+SHA-256: `ba386f13d7fb2f88620fa5f38513cfd11e29bb216ceee524a97f41ce4945504b`.
+
 ## Study application
 
 The CCNA report links the reviewed source at commit `7046ee3e82b925b1c4152e604ff5bdea00f08e35`. Local storage, quizzes, flashcards, notes and export/import are visible in the source. Completed labs, runtime correctness, authorship details and issuer certification are separate claims and were not inferred.

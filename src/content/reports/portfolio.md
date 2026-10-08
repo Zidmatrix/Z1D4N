@@ -39,7 +39,7 @@ The source, test suite and deployment workflow are included in this project. Act
 
 ## Limitations
 
-Issuer verification links, detailed IT Gate training information, a reviewed technical CV and specific lab artifacts have not yet been supplied. The old sales portfolios remain untouched. There is no simulated contact form, fabricated CV, skill percentage or invented employment history.
+Issuer verification links, detailed IT Gate training information and specific lab artifacts have not yet been supplied. The owner-supplied technical CV is available as its original PDF in the Contact section. The old sales portfolios remain untouched. There is no simulated contact form, fabricated CV, skill percentage or invented employment history.
 
 ## Remediation and Retesting
 

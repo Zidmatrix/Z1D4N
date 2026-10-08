@@ -4,6 +4,7 @@ import projects from "../src/content/projects.json" with { type: "json" };
 import certificates from "../src/content/certifications.json" with { type: "json" };
 import profile from "../src/content/profile.json" with { type: "json" };
 import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 
 test("production page loads its fonts, image, assets and factual content without errors", async ({
   page,
@@ -170,9 +171,24 @@ test("contact URLs are real and the CV is only linked when supplied", async ({
       0,
     );
   } else {
-    await expect(
-      page.getByRole("link", { name: /Download.*CV/ }),
-    ).toHaveAttribute("href", `/Z1D4N/${profile.cv}`);
+    const cvLink = page.getByRole("link", { name: /Download.*CV/ });
+    await expect(cvLink).toHaveAttribute("href", `/Z1D4N/${profile.cv}`);
+    const [download] = await Promise.all([
+      page.waitForEvent("download"),
+      cvLink.click(),
+    ]);
+    expect(download.suggestedFilename()).toBe(profile.cv.split("/").at(-1));
+    expect(await download.failure()).toBeNull();
+    const file = await download.path();
+    expect(file).not.toBeNull();
+    const downloaded = readFileSync(file!);
+    const original = readFileSync(
+      new URL(`../public/${profile.cv}`, import.meta.url),
+    );
+    expect(downloaded.subarray(0, 5).toString()).toBe("%PDF-");
+    expect(createHash("sha256").update(downloaded).digest("hex")).toBe(
+      createHash("sha256").update(original).digest("hex"),
+    );
   }
   await page.getByRole("button", { name: "Copy email" }).click();
   await expect(page.locator(".copy-button")).toHaveText(

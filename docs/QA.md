@@ -8,7 +8,7 @@ Validated locally on 2026-10-08. This record distinguishes the working local sit
 - Content validation: 2 actual projects, 4 capability areas, 3 owner-reported professional certifications, 3 training entries and 1 AI-assisted project note. Referenced portraits, optional downloads and Markdown paths are checked at build time.
 - TypeScript type checking and Vite 8.3.4 production build.
 - Functional startup of the development server: a browser selected the Systems node and received its expected explanation.
-- Final browser suite on the `/Z1D4N/` production path: **37 passed, 2 skipped, 0 failed** in 40.7 seconds, using Chromium 151.0.7922.173. The skipped instances are the phone-menu test in the desktop and reduced-motion projects; the actual mobile-menu test passed.
+- Complete browser suite before the CV addition on the `/Z1D4N/` production path: **37 passed, 2 skipped, 0 failed** in 40.7 seconds, using Chromium 151.0.7922.173. The skipped instances are the phone-menu test in the desktop and reduced-motion projects; the actual mobile-menu test passed.
 - Desktop, phone and reduced-motion contexts; additional layout checks at 320, 390, 768, 1024 and 1440 pixels with no horizontal overflow and the correct navigation-toggle visibility.
 - Actual image and self-hosted font loading, with no observed page errors or failed asset responses during the loading test.
 - Project filters, network-node keyboard activation, data-driven capability links, archive and training disclosures.
@@ -32,6 +32,13 @@ These show the **local production build**, not a deployed website:
 - [Desktop archive](screenshots/archive-desktop.png)
 - [Phone archive](screenshots/archive-mobile.png)
 
+## Owner-supplied CV update — 2026-10-08
+
+- The original PDF was opened and visually inspected, then copied unchanged to `public/downloads/`. Its checksum matches the upload and the built output; provenance is recorded in `SOURCES.md`.
+- `npm run build` passed content validation, TypeScript and the production build after the CV/content update.
+- `npm test -- --grep 'contact URLs'`: **3 passed, 0 failed** in 6.4 seconds, covering desktop, mobile and reduced-motion contexts. Each test activated the real download link, checked the original filename and PDF signature, and compared the downloaded bytes by SHA-256 with the repository PDF.
+- This was focused validation of the update, not another run of the complete 37-check suite. Publication remains deferred.
+
 ## GitHub source and publication history
 
 - Existing platform Git authentication successfully read `Zidmatrix/Z1D4N`.
@@ -50,4 +57,4 @@ On 2026-10-08 the owner approved the design/colors and asked to focus on buildin
 
 In the publication phase, recheck the actual Pages source and current Actions runs, use the existing Actions workflow, resolve any remaining settings/deployment issue, and test the actual production site with `PORTFOLIO_TEST_URL=https://zidmatrix.github.io/Z1D4N/ npm run test:live`. Preserve certificate validation. A successful local build, HTTP 200 or branch-based Jekyll job alone does not complete that phase.
 
-Safari/iOS, Firefox, screen-reader review and real mail-client delivery were not tested. Automated accessibility checks do not replace manual assistive-technology testing. Existing CCNA app runtime behavior, exam issuer verification, the missing technical CV and unseen course-certificate image were not validated by these portfolio tests.
+Safari/iOS, Firefox, screen-reader review and real mail-client delivery were not tested. Automated accessibility checks do not replace manual assistive-technology testing. Existing CCNA app runtime behavior, exam issuer verification, the factual claims within the owner-supplied CV and unseen course-certificate image were not validated by these portfolio tests.

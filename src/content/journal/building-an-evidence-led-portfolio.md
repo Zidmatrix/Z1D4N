@@ -17,7 +17,9 @@ Cybersecurity is the main direction. Networking, operating systems and programmi
 
 ## Next evidence to collect
 
-A reviewed CV, issuer evidence for the exams, IT Gate dates and scope, and a sanitized project artifact with an explanation of my specific contribution.
+Issuer evidence for the exams, IT Gate dates and scope, and a sanitized project artifact with an explanation of my specific contribution.
+
+The owner supplied the technical CV on 2026-10-08. Its original PDF is now available from the Contact section.
 
 ## Weekly review
 

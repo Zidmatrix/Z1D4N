@@ -828,7 +828,7 @@ export default function App() {
               <FileText size={17} />
               {profile.cv ? (
                 <a href={asset(profile.cv)} download className="text-link">
-                  Download reviewed CV <ArrowDown size={15} />
+                  Download CV <ArrowDown size={15} />
                 </a>
               ) : (
                 <span>

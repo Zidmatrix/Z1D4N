@@ -42,7 +42,7 @@ The site address remains a target until a deployment is verified. Public reposit
 - Separate professional certifications, course completion, training and practical use. Clearly state missing evidence.
 - Include the CCNA app only after source review. Do not describe its labs as completed or claim undocumented independent authorship.
 - Disclose substantial AI assistance in this portfolio and its initial journal note.
-- Defer additional project examples, IT Gate details, LinkedIn and the correct CV, as requested by the owner: “خليه للاخر”. Do not ask those questions again before the owner is ready.
+- Defer additional project examples, IT Gate details and LinkedIn, as requested by the owner: “خليه للاخر”. The owner subsequently supplied the technical CV on 2026-10-08 and explicitly authorized its website download. Do not ask for the remaining materials again before the owner is ready.
 - Draft profile README and pinning recommendations are saved here; no other profile or repository was modified.
 
 ## Completed
@@ -56,6 +56,7 @@ The site address remains a target until a deployment is verified. Public reposit
 - Capability links resolve project report slugs from the content records, so adding a project does not require a fixed code mapping. The journal describes a weekly reflection workflow without claiming ongoing automatic reviews.
 - Canonical/SEO URLs, report/download URLs, the test server path and the portfolio repository link now match Z1D4N. The configure-pages build step has the required read permission; only the deployment job has write permissions.
 - Reproducible setup refresh and local development/production startup checked.
+- The supplied junior penetration tester CV is stored unchanged in `public/downloads/` and linked by the existing Contact download control. Its provenance and checksum are in `SOURCES.md`; no broader factual-content edits were inferred from the upload. The production build and three focused contact/download checks passed after this update, including SHA-256 comparison of the actual browser downloads with the PDF.
 
 ## Remote validation history
 
@@ -69,7 +70,7 @@ The owner made the repository public and enabled Pages through GitHub. Publicati
 
 ## Materials to add later
 
-- Correct reviewed technical CV and LinkedIn URL.
+- LinkedIn URL; the correct technical CV has now been supplied and added.
 - IT Gate dates, scope and actual contribution.
 - Issuer evidence for the professional exams and the actual training-certificate image.
 - Individual/team contribution and AI assistance for the existing CCNA study app.
