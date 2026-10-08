@@ -4,13 +4,13 @@ Last updated: 2026-10-08 (Africa/Cairo user date).
 
 ## Current state
 
-The owner explicitly selected the existing `Zidmatrix/Z1D4N` repository. The portfolio is now implemented and validated at `/workspace/Z1D4N`, with the original initial commit preserved and the prior implementation commits imported. The original independent local directory is a retained backup, not the active publishing target. Other existing repositories remain unchanged. The implementation was pushed to remote `main` at `6b38a8be8360d8df6249cf102533428e4e41c2b2`. **Pages publication has not succeeded yet.**
+The owner explicitly selected the existing `Zidmatrix/Z1D4N` repository. The portfolio is implemented and validated at `/workspace/Z1D4N`, with its initial commit, imported implementation history and the owner's later commits preserved. The independent local directory is a retained backup, not the active publishing target. Other repositories remain unchanged. The owner approved the design and colors and requested that building/testing take priority, with **publication left for the final phase**. The final local production suite passed 37 checks; no working live deployment is claimed.
 
 Actual repository: `https://github.com/Zidmatrix/Z1D4N`.
 
 Intended Pages URL: `https://zidmatrix.github.io/Z1D4N/`.
 
-The site address remains a target until a deployment is verified. The owner changed the repository to public, confirmed by the repository API. Pages is not enabled yet. The connected integration still rejects Pages creation with HTTP 403, so selecting GitHub Actions as the publishing source requires the owner's GitHub UI or an appropriately authorized connection.
+The site address remains a target until a deployment is verified. Public repository visibility is confirmed. The last Pages check showed branch-based publication, serving unbuilt source instead of the Vite output. The integration rejected Pages settings changes with HTTP 403. This is recorded for the later publication phase; it does not block completion of the requested build and tests.
 
 ## Confirmed / owner-supplied information
 
@@ -37,6 +37,7 @@ The site address remains a target until a deployment is verified. The owner chan
 - English professional content; Arabic communication with the owner.
 - Static React/TypeScript/Vite site, free GitHub Pages target, no backend or paid services.
 - Dark editorial visual identity, cyan emphasis, restrained purple, lightweight SVG/CSS illustrations, self-hosted fonts and normal pointer/scroll behavior.
+- Design and colors approved by the owner on 2026-10-08; no additional design approval is needed. Leave publication for the final phase as requested.
 - JSON factual records and Markdown reports/journal; new content does not require layout edits.
 - Separate professional certifications, course completion, training and practical use. Clearly state missing evidence.
 - Include the CCNA app only after source review. Do not describe its labs as completed or claim undocumented independent authorship.
@@ -47,23 +48,24 @@ The site address remains a target until a deployment is verified. The owner chan
 ## Completed
 
 - All portfolio sections: introduction/about, technical capabilities, featured projects and archive, certifications/training, technical experience, education, learning journal and contact.
-- Interactive node exploration, category filters, native Markdown reading/downloads, expandable evidence/training, phone navigation, email copy and motion preferences.
+- Interactive node exploration, category filters, searchable project archive with direct source links, native Markdown reading/downloads, expandable evidence/training, phone navigation, email copy and motion preferences.
 - GitHub Pages base path and hash navigation, SEO files, local fonts/portrait with licenses/provenance.
 - Content validators, production build, browser tests and minimal-permission automatic/manual Pages workflow with pinned action SHAs.
 - English README covering local setup, content edits, contact/CV updates, commits, publishing and history-preserving rollback.
-- Local validation was rerun after migrating to `/Z1D4N/`: 31 browser tests passed in 34.3 seconds; two inapplicable desktop instances of the phone-menu test skipped. Details in `QA.md`.
+- Final validation on `/Z1D4N/`: content validation, TypeScript and Vite build passed; 37 browser checks passed in 40.7 seconds, with two inapplicable phone-menu instances skipped. Search/reset, actual downloaded report contents and browser Back/Forward are included. Details in `QA.md` and the requirements checklist in `ACCEPTANCE.md`.
+- Capability links resolve project report slugs from the content records, so adding a project does not require a fixed code mapping. The journal describes a weekly reflection workflow without claiming ongoing automatic reviews.
 - Canonical/SEO URLs, report/download URLs, the test server path and the portfolio repository link now match Z1D4N. The configure-pages build step has the required read permission; only the deployment job has write permissions.
 - Reproducible setup refresh and local development/production startup checked.
 
-## Remote validation
+## Remote validation history
 
-GitHub Actions run [37792572070](https://github.com/Zidmatrix/Z1D4N/actions/runs/37792572070) checked out the pushed source, installed locked dependencies and the browser, built successfully, and passed the browser-test step. The run then failed at **Configure Pages** with **Not Found**, because a Pages site is not enabled. Upload was skipped and deployment did not run. The direct Pages URL returned HTTP 404. This is a settings blocker, not an unexplained build or application defect.
+The first pushed implementation passed installation, production build and 31 browser checks in runs [37792572070](https://github.com/Zidmatrix/Z1D4N/actions/runs/37792572070) and [37793109364](https://github.com/Zidmatrix/Z1D4N/actions/runs/37793109364). Configure Pages failed before Pages was enabled. After the owner enabled branch-based Pages, a later Actions run passed configuration/artifact upload but reported a collision with a concurrent branch-based deployment. The last HTTP 200 page still referenced `/src/main.tsx`; it was not the built app. A live-browser attempt failed certificate validation, which was not bypassed. These are historical observations, not proof of a current live site.
 
-## External blocker
+## Final publication phase
 
-The connected GitHub account is Zidmatrix. Repository and Actions-run reads work. Pages read/create and repository visibility updates were rejected as `Resource not accessible by integration` (HTTP 403). A reported administrator role does not give this integration those API permissions.
+The connected GitHub account is Zidmatrix. Repository reads, commits/pushes and Actions-run reads work. Pages creation/settings updates and the initial repository visibility update were rejected as `Resource not accessible by integration` (HTTP 403). A reported administrator role does not give this integration those API permissions.
 
-The repository is now public, satisfying the free-hosting requirement. The remaining owner action is **Settings → Pages → Build and deployment → Source → GitHub Actions**. No visibility change or paid plan is needed. No token value is requested in chat. After settings change, recheck the actual state, run the existing workflow and verify the live site. Do not force-push or replace another site.
+The owner made the repository public and enabled Pages through GitHub. Publication is now deliberately deferred. When that phase resumes, recheck settings and current runs rather than assuming the previous state still applies. The Vite artifact must be deployed using GitHub Actions and tested on the actual URL. Resolve any remaining source setting or certificate-trust issue then. Do not request tokens in chat, force-push, bypass TLS checks or replace another site.
 
 ## Materials to add later
 
@@ -75,8 +77,6 @@ The repository is now public, satisfying the free-hosting requirement. The remai
 
 ## Resume when the owner says “نكمل”
 
-Read this log and QA first. Use `/workspace/Z1D4N` and its existing `origin`. Inspect the remote and current Actions runs; preserve the owner's changes and all local commits. After Pages settings are supplied, trigger the existing `pages.yml` workflow on main, inspect the actual run, test `https://zidmatrix.github.io/Z1D4N/`, then update the publication record and delivery links. Do not repeat the old request to create zidvn-portfolio; the owner has replaced that destination with Z1D4N.
+Read this log, `QA.md` and `ACCEPTANCE.md` first. Use `/workspace/Z1D4N` and its existing `origin`; preserve the owner's changes and all local commits. The build/design are approved and tested. Continue the task the owner requests without reopening design approval or asking for the deferred materials. If publication is requested, inspect current settings/runs, deploy the existing `pages.yml` workflow, verify `https://zidmatrix.github.io/Z1D4N/`, then update the publication record and delivery links. Do not repeat the old request to create zidvn-portfolio; the owner replaced that destination with Z1D4N.
 
 The current environment has Internet access and an active GitHub connection. The `install_script` and `start_skill` fields were saved as a draft using `/workspace/Z1D4N`. The draft needs environment review/save and publication to become active; this is separate from Pages deployment. Configuration saves do not prove website publication or restoration in a new task.
-
-Latest verification: [Actions run 37793109364](https://github.com/Zidmatrix/Z1D4N/actions/runs/37793109364) again passed the production build and browser-test steps, then failed at Configure Pages. Public visibility is confirmed; Pages activation remains the only publishing prerequisite.

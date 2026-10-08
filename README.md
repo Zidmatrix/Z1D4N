@@ -57,7 +57,7 @@ PORTFOLIO_TEST_URL=https://zidmatrix.github.io/Z1D4N/ npm run test:live
 
 1. Copy an object in `projects.json`. Choose a unique lowercase `id`; add real context, tools, evidence, your contribution and limitations. Set `featured: false` to put it in the archive without featuring it.
 2. Write a report in `src/content/reports/<report-slug>.md`, using [the project template](docs/templates/PROJECT.md). Set the object's `report` to that filename without `.md`.
-3. Use a genuine HTTPS repository link, or `null` until one exists. Choose `visual: "roadmap"` or `"portfolio"` for a conceptual card illustration. These illustrations represent an interface; they are not screenshots or proof of results.
+3. Use a genuine HTTPS repository link, or `null` until one exists. Choose `visual: "roadmap"` or `"portfolio"` for a conceptual card illustration. These illustrations represent an interface; they are not screenshots or proof of results. The archive automatically includes each project and searches its title, summary, category and tools.
 4. Run the build and tests, then commit and push. New categories appear automatically. Reports can be read in the site and downloaded as their actual Markdown files.
 
 ### Add a certification or training record
@@ -119,5 +119,6 @@ Use `git log --oneline` to find the relevant content or design commit. Prefer `g
 - [Profile README draft](docs/PROFILE_README.md): a proposed GitHub profile introduction, not an automatic change to another repository.
 - [Repository review](docs/REPOSITORY_REVIEW.md): pinning recommendations based on inspected content.
 - [Design notes](docs/DESIGN.md): visual direction and interaction choices.
+- [Implementation checklist](docs/ACCEPTANCE.md): requirement coverage, approved design, deferred materials and testing scope.
 
 For future Codex tasks, use the existing checkout. Each cloud task is already isolated; do not create a Git worktree unless explicitly requested.

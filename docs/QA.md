@@ -8,18 +8,19 @@ Validated locally on 2026-10-08. This record distinguishes the working local sit
 - Content validation: 2 actual projects, 4 capability areas, 3 owner-reported professional certifications, 3 training entries and 1 AI-assisted project note. Referenced portraits, optional downloads and Markdown paths are checked at build time.
 - TypeScript type checking and Vite 8.3.4 production build.
 - Functional startup of the development server: a browser selected the Systems node and received its expected explanation.
-- Complete browser suite rerun on the `/Z1D4N/` production path: **31 passed, 2 skipped, 0 failed** in 34.3 seconds, using Chromium 151.0.7922.173. The skipped instances are the phone-menu test in the desktop and reduced-motion projects; the actual mobile-menu test passed.
+- Final browser suite on the `/Z1D4N/` production path: **37 passed, 2 skipped, 0 failed** in 40.7 seconds, using Chromium 151.0.7922.173. The skipped instances are the phone-menu test in the desktop and reduced-motion projects; the actual mobile-menu test passed.
 - Desktop, phone and reduced-motion contexts; additional layout checks at 320, 390, 768, 1024 and 1440 pixels with no horizontal overflow and the correct navigation-toggle visibility.
 - Actual image and self-hosted font loading, with no observed page errors or failed asset responses during the loading test.
-- Project filters, network-node keyboard activation, correct capability links, archive and training disclosures.
-- Markdown modal focus containment, Escape handling, focus restoration and an actual Markdown download.
-- Direct report and journal hash URLs, including a page refresh.
+- Project filters, network-node keyboard activation, data-driven capability links, archive and training disclosures.
+- Archive search by title, category and tool, matching counts, empty results, clearing the search and real repository source destinations.
+- Markdown modal focus containment, Escape handling, focus restoration and an actual Markdown download whose saved contents were checked.
+- Direct report and journal hash URLs, including a page refresh and browser Back/Forward reader restoration.
 - Real email, phone and GitHub destinations. Copy email either completes or shows its explicit fallback; no fake CV link is rendered.
 - OS reduced motion and a persistent manual motion preference.
-- axe WCAG 2 A/AA and WCAG 2.1 AA scans of the page and open dialog produced no reported violations in the tested contexts.
-- Visual inspection of desktop, phone and project-section screenshots. Earlier navigation visibility and dialog lifecycle/focus defects were corrected before the final passing run.
+- axe WCAG 2 A/AA and WCAG 2.1 AA scans of the page, open dialog and expanded archive produced no reported violations in the tested contexts.
+- Visual inspection of desktop, phone, project-section and expanded-archive screenshots. Earlier navigation visibility and dialog lifecycle/focus defects were corrected before the final passing run.
 
-The production entry script is approximately 386 kB uncompressed / 120 kB gzip, the CSS about 34 kB / 8 kB gzip, both font files about 71 kB combined, and the portrait about 32 kB. These are build measurements, not a Lighthouse score. There is no WebGL dependency or third-party runtime font request.
+The production entry script is approximately 388 kB uncompressed / 120 kB gzip, the CSS about 35 kB / 8 kB gzip, both font files about 71 kB combined, and the portrait about 32 kB. These are build measurements, not a Lighthouse score. There is no WebGL dependency or third-party runtime font request.
 
 ## Screenshots
 
@@ -28,24 +29,25 @@ These show the **local production build**, not a deployed website:
 - [Desktop](screenshots/desktop.png)
 - [Phone](screenshots/mobile.png)
 - [Project section](screenshots/work.png)
+- [Desktop archive](screenshots/archive-desktop.png)
+- [Phone archive](screenshots/archive-mobile.png)
 
-## GitHub outcomes
+## GitHub source and publication history
 
 - Existing platform Git authentication successfully read `Zidmatrix/Z1D4N`.
-- After required domains became reachable, GitHub API confirmed that the connected account is `Zidmatrix`; its repository list contains the five public repositories reviewed and the private `Z1D4N` repository.
+- GitHub API confirmed that the connected account is `Zidmatrix`. The owner subsequently changed `Z1D4N` to public, which was independently confirmed.
 - The owner replaced the new-repository destination with the existing `Zidmatrix/Z1D4N`. The original commit is preserved and the portfolio source was migrated into that checkout.
-- Pages read/create requests and the repository visibility update were rejected with **Resource not accessible by integration** (HTTP 403). The owner subsequently changed the repository to public, confirmed by the API. A new Pages creation attempt still returned HTTP 403; Pages GET returned HTTP 404 and `has_pages` remained false.
+- Pages creation/settings updates and the initial visibility update were rejected with **Resource not accessible by integration** (HTTP 403). The owner enabled Pages through GitHub, but the last observed source was **Deploy from a branch**, not **GitHub Actions**. The last settings read reported `build_type: legacy` and no custom domain.
 - The GitHub Pages workflow was checked against current official documentation and action tags. The build has `contents: read` and `pages: read`; deployment has `pages: write` and `id-token: write`. Configure-pages enablement requires a separate appropriately authorized token, so that option is not used to bypass the missing administration permission.
-- The source was pushed to `main` at `6b38a8be8360d8df6249cf102533428e4e41c2b2`. Remote run [37792572070](https://github.com/Zidmatrix/Z1D4N/actions/runs/37792572070) passed dependency installation, browser installation, production build and the test step. It failed at **Configure Pages** with **Not Found**, because Pages is not enabled. Artifact upload and deployment were skipped.
-- The actual `https://zidmatrix.github.io/Z1D4N/` request returned HTTP 404. No live site is claimed.
+- The initial pushed implementation passed installation, production build and 31 browser checks in remote runs [37792572070](https://github.com/Zidmatrix/Z1D4N/actions/runs/37792572070) and [37793109364](https://github.com/Zidmatrix/Z1D4N/actions/runs/37793109364). They failed at Configure Pages before the owner enabled Pages. These are historical runs, not validation of the latest 37-check revision.
+- A later run passed Configure Pages and uploaded the artifact, then reported a deployment collision with the branch-based Pages job. The owner's CNAME creation/deletion commits were preserved.
+- The last actual URL request returned HTTP 200 but contained the unbuilt `/src/main.tsx` entry instead of production assets. A separate live-browser attempt failed at certificate validation; that check was not bypassed. No working live Vite site is claimed.
 - Other inspected repositories were left unchanged.
 
-## Unverified / awaiting outside action
+## Publication deferred by the owner
 
-1. Public visibility is now confirmed. In the existing Z1D4N repository, select **Settings → Pages → Source → GitHub Actions**; the integration could not enable Pages.
-2. Trigger the existing Pages workflow on `main`; inspect both the build and deployment jobs.
-3. After successful deployment, run `PORTFOLIO_TEST_URL=https://zidmatrix.github.io/Z1D4N/ npm run test:live` and inspect the deployed assets and links.
+On 2026-10-08 the owner approved the design/colors and asked to focus on building and testing, leaving publication for the final phase. Local implementation acceptance is recorded in [ACCEPTANCE.md](ACCEPTANCE.md). No further design approval is pending.
+
+In the publication phase, recheck the actual Pages source and current Actions runs, use the existing Actions workflow, resolve any remaining settings/deployment issue, and test the actual production site with `PORTFOLIO_TEST_URL=https://zidmatrix.github.io/Z1D4N/ npm run test:live`. Preserve certificate validation. A successful local build, HTTP 200 or branch-based Jekyll job alone does not complete that phase.
 
 Safari/iOS, Firefox, screen-reader review and real mail-client delivery were not tested. Automated accessibility checks do not replace manual assistive-technology testing. Existing CCNA app runtime behavior, exam issuer verification, the missing technical CV and unseen course-certificate image were not validated by these portfolio tests.
-
-Latest verification: [Actions run 37793109364](https://github.com/Zidmatrix/Z1D4N/actions/runs/37793109364) again passed the production build and browser-test steps, then failed at Configure Pages. Public visibility is confirmed; Pages activation remains the only publishing prerequisite.
