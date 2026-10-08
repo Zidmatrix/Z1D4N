@@ -10,7 +10,7 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: [['list']],
   use: {
-    baseURL: live || 'http://127.0.0.1:4175/zidvn-portfolio/',
+    baseURL: live || 'http://127.0.0.1:4175/Z1D4N/',
     trace: 'retain-on-failure',
     launchOptions: { executablePath, args: ['--no-sandbox'] },
   },
@@ -19,5 +19,5 @@ export default defineConfig({
     { name: 'mobile', use: { ...devices['Pixel 7'], viewport: { width: 390, height: 844 } } },
     { name: 'reduced-motion', use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' } },
   ],
-  webServer: live ? undefined : { command: 'npm run preview -- --port 4175 --strictPort', url: 'http://127.0.0.1:4175/zidvn-portfolio/', reuseExistingServer: false, timeout: 30_000 },
+  webServer: live ? undefined : { command: 'npm run preview -- --port 4175 --strictPort', url: 'http://127.0.0.1:4175/Z1D4N/', reuseExistingServer: false, timeout: 30_000 },
 });

@@ -2,7 +2,7 @@
 
 A technical portfolio focused on cybersecurity, with networking, Linux/Windows, programming and university work in context. React, TypeScript and Vite produce a static site for GitHub Pages. There is no backend, database, subscription or paid service.
 
-The target repository is `Zidmatrix/zidvn-portfolio`. The intended Pages address is `https://zidmatrix.github.io/zidvn-portfolio/`. Check [the project log](docs/PROJECT_LOG.md) for actual publication status; these target addresses do not establish that a remote repository or deployment exists.
+The repository is [Zidmatrix/Z1D4N](https://github.com/Zidmatrix/Z1D4N). The intended Pages address is `https://zidmatrix.github.io/Z1D4N/`. Check [the project log](docs/PROJECT_LOG.md) for actual publication status; the site address is a target until a deployment has been verified. The original README-only repository history is preserved.
 
 ## Run locally
 
@@ -13,7 +13,7 @@ npm ci
 npm run dev
 ```
 
-Vite prints the local development address. The application path is `/zidvn-portfolio/`.
+Vite prints the local development address. The application path is `/Z1D4N/`.
 
 ```sh
 npm run build
@@ -37,7 +37,7 @@ The cloud machine already has system Chromium; the test configuration detects it
 To test the real Pages deployment after a successful Actions run:
 
 ```sh
-PORTFOLIO_TEST_URL=https://zidmatrix.github.io/zidvn-portfolio/ npm run test:live
+PORTFOLIO_TEST_URL=https://zidmatrix.github.io/Z1D4N/ npm run test:live
 ```
 
 ## Edit content without changing the design
@@ -76,13 +76,13 @@ Keep contact details you intend to make public. Do not add tokens, passwords, cl
 
 ## GitHub Pages deployment
 
-The workflow in `.github/workflows/pages.yml` runs on pushes to `main` and through **Actions → Build, test and deploy portfolio → Run workflow**. It installs locked packages, validates content and types, builds, runs browser tests, uploads `dist/`, and deploys after the checks pass. Actions are pinned to reviewed commit SHAs. The build receives only `contents: read`; the deployment job receives `pages: write` and `id-token: write`.
+The workflow in `.github/workflows/pages.yml` runs on pushes to `main` and through **Actions → Build, test and deploy portfolio → Run workflow**. It installs locked packages, validates content and types, builds, runs browser tests, uploads `dist/`, and deploys after the checks pass. Actions are pinned to reviewed commit SHAs. The build receives `contents: read` and `pages: read` for Pages configuration; the deployment job receives `pages: write` and `id-token: write`.
 
-When creating the remote for the first time:
+First deployment of this existing repository:
 
-1. Confirm you are signed into **Zidmatrix** and the name **zidvn-portfolio** is available. If it is already used, inspect its content before any push. Do not reuse an unrelated repository.
-2. Create an empty **public** repository named `zidvn-portfolio`, without an initial README or license.
-3. Upload/push this project to `main`. Use the repository's **Settings → Pages → Build and deployment → Source → GitHub Actions**.
+1. Use the existing **Zidmatrix/Z1D4N** repository. Preserve its history and inspect new upstream changes before pushing.
+2. For GitHub Pages at zero cost, use a public repository. A private repository requires a plan that includes Pages for private repositories; do not purchase a plan for this project.
+3. Push this project to `main`. Use the repository's **Settings → Pages → Build and deployment → Source → GitHub Actions**.
 4. Allow Actions to run, or trigger the workflow manually after enabling Pages. Check both the build and deployment jobs.
 5. Open the deployed URL and run the live tests. The application is not considered published until the deployment succeeds and the live site loads correctly.
 
@@ -90,15 +90,13 @@ With working GitHub CLI authentication, the corresponding commands are:
 
 ```sh
 gh api user --jq .login
-gh repo create Zidmatrix/zidvn-portfolio --public --description "Evidence-led technical portfolio for Abdulrahman Zidan"
-git remote add origin https://github.com/Zidmatrix/zidvn-portfolio.git
 git push -u origin main
-gh api --method POST repos/Zidmatrix/zidvn-portfolio/pages -f build_type=workflow
-gh workflow run pages.yml --repo Zidmatrix/zidvn-portfolio --ref main
-gh run list --repo Zidmatrix/zidvn-portfolio --workflow pages.yml
+gh api --method POST repos/Zidmatrix/Z1D4N/pages -f build_type=workflow
+gh workflow run pages.yml --repo Zidmatrix/Z1D4N --ref main
+gh run list --repo Zidmatrix/Z1D4N --workflow pages.yml
 ```
 
-Run `git remote add` only if `origin` is absent. If Pages already exists, inspect it and use the settings UI or the appropriate API update; do not delete it. A Git clone succeeding does not establish API or push permission. Do not place an authentication token in this public project.
+The existing `origin` is already configured. If Pages already exists, inspect it and use the settings UI or the appropriate API update; do not delete it. A Git clone succeeding does not establish Pages administration permission. Do not place an authentication token in this project.
 
 ### Future updates
 

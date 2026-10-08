@@ -4,13 +4,13 @@ Last updated: 2026-10-08 (Africa/Cairo user date).
 
 ## Current state
 
-The independent portfolio is implemented and validated locally at `/workspace/zidvn-portfolio`. It has a local `main` branch with clear implementation, deployment and documentation commits. Existing repositories remain unchanged. **There is no new remote repository or published site yet.**
+The owner explicitly selected the existing `Zidmatrix/Z1D4N` repository. The portfolio is now implemented and validated at `/workspace/Z1D4N`, with the original initial commit preserved and the prior implementation commits imported. The original independent local directory is a retained backup, not the active publishing target. Other existing repositories remain unchanged. **Pages publication has not succeeded yet.**
 
-Intended repository: `Zidmatrix/zidvn-portfolio`.
+Actual repository: `https://github.com/Zidmatrix/Z1D4N`.
 
-Intended Pages URL: `https://zidmatrix.github.io/zidvn-portfolio/`.
+Intended Pages URL: `https://zidmatrix.github.io/Z1D4N/`.
 
-These are targets, not verified delivery links. GitHub creation is blocked by the connected integration's authorization. Do not substitute the existing private `Z1D4N` repository or overwrite another Pages site.
+The site address remains a target until a deployment is verified. The repository currently remains private. The connected integration rejects Pages administration and repository visibility updates, so those settings require the owner's GitHub UI or an appropriately authorized connection.
 
 ## Confirmed / owner-supplied information
 
@@ -33,7 +33,7 @@ These are targets, not verified delivery links. GitHub creation is blocked by th
 
 ## Decisions
 
-- Keep the technical project independent from the sales portfolios and the private selected checkout.
+- Use Z1D4N as explicitly requested by the owner, preserving its original history. Keep the sales portfolios unchanged.
 - English professional content; Arabic communication with the owner.
 - Static React/TypeScript/Vite site, free GitHub Pages target, no backend or paid services.
 - Dark editorial visual identity, cyan emphasis, restrained purple, lightweight SVG/CSS illustrations, self-hosted fonts and normal pointer/scroll behavior.
@@ -51,14 +51,15 @@ These are targets, not verified delivery links. GitHub creation is blocked by th
 - GitHub Pages base path and hash navigation, SEO files, local fonts/portrait with licenses/provenance.
 - Content validators, production build, browser tests and minimal-permission automatic/manual Pages workflow with pinned action SHAs.
 - English README covering local setup, content edits, contact/CV updates, commits, publishing and history-preserving rollback.
-- Local validation: 31 browser tests passed; two inapplicable desktop instances of the phone-menu test skipped. Details in `QA.md`.
+- Local validation was rerun after migrating to `/Z1D4N/`: 31 browser tests passed in 34.3 seconds; two inapplicable desktop instances of the phone-menu test skipped. Details in `QA.md`.
+- Canonical/SEO URLs, report/download URLs, the test server path and the portfolio repository link now match Z1D4N. The configure-pages build step has the required read permission; only the deployment job has write permissions.
 - Reproducible setup refresh and local development/production startup checked.
 
 ## External blocker
 
-The connected GitHub account is Zidmatrix. Public and private repository reads work. Both GraphQL and REST repository-creation attempts were rejected as `Resource not accessible by integration` (REST HTTP 403). Existing repository admin access does not imply permission to create a new repository.
+The connected GitHub account is Zidmatrix. Repository and Actions-run reads work. Pages read/create and repository visibility updates were rejected as `Resource not accessible by integration` (HTTP 403). A reported administrator role does not give this integration those API permissions.
 
-The owner must create an empty **public** repository named **zidvn-portfolio** and grant the GitHub integration access, or supply a connection authorized for creation. No secret value is requested in chat. After that, recheck access and continue the existing work. Do not recreate files, force-push, replace other sites or claim successful publication from a local build.
+For the requested zero-cost deployment, the owner can open Z1D4N **Settings → General → Danger Zone → Change repository visibility → Public**, then **Settings → Pages → Build and deployment → Source → GitHub Actions**. A private repository instead needs an existing plan that includes private-repository Pages; do not buy a plan. No token value is requested in chat. After settings change, recheck the actual state, run the existing workflow and verify the live site. Do not force-push or replace another site.
 
 ## Materials to add later
 
@@ -70,6 +71,6 @@ The owner must create an empty **public** repository named **zidvn-portfolio** a
 
 ## Resume when the owner says “نكمل”
 
-Read this log and QA first. Preserve local commits. If the new repository has been created, inspect its contents and permissions, then connect it as `origin` and push `main`. Enable Pages using GitHub Actions, inspect the actual workflow result, test the real site, update the project record and replace target-only delivery statements with verified links. If the repository is not empty or belongs to another project, stop dependent pushes and preserve its content.
+Read this log and QA first. Use `/workspace/Z1D4N` and its existing `origin`. Inspect the remote and current Actions runs; preserve the owner's changes and all local commits. After Pages settings are supplied, trigger the existing `pages.yml` workflow on main, inspect the actual run, test `https://zidmatrix.github.io/Z1D4N/`, then update the publication record and delivery links. Do not repeat the old request to create zidvn-portfolio; the owner has replaced that destination with Z1D4N.
 
-The environment also has draft network additions for `api.github.com`, `docs.github.com` and `zidmatrix.github.io`. Reachability was subsequently verified for GitHub API, and the target Pages URL returned an actual 404. Configuration saves do not prove publication or restoration in a new task.
+The current environment has Internet access and an active GitHub connection. Draft install/start instructions must use `/workspace/Z1D4N`. Configuration saves do not prove website publication or restoration in a new task.

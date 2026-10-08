@@ -1,6 +1,6 @@
 # GitHub organization and pinning review
 
-Source inspected on 2026-10-08. No existing repositories, pins, descriptions or profile settings were changed.
+Source inspected on 2026-10-08. The owner subsequently selected Z1D4N for the technical portfolio. Other existing repositories, pins and profile settings were not changed.
 
 | Repository | Reviewed content | Recommendation |
 | --- | --- | --- |
@@ -9,8 +9,7 @@ Source inspected on 2026-10-08. No existing repositories, pins, descriptions or 
 | `Abdul.Zidan` | Another editorial sales website with static export and assets | Preserve; choose a single representative sales site rather than three similar pins. |
 | `Abdulrahman-Zidan` | Sales portfolio source with Next.js and WebGL components | Preserve; inspect current delivery before describing its status. |
 | `Myweb` | README only | Not a useful technical evidence pin yet. |
-| `Z1D4N` | README only in the selected checkout | Left unchanged; not used for the independent portfolio. |
-| `zidvn-portfolio` | This new local implementation | Pin after its actual remote, Actions run and Pages deployment have been verified. |
+| `Z1D4N` | Originally a README-only repository; now selected by the owner for this technical portfolio | Pin after the Actions run and Pages deployment have been verified. |
 
 ## Evidence gaps worth filling next
 

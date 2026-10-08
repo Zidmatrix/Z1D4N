@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/zidvn-portfolio/',
+  base: '/Z1D4N/',
   build: { target: 'es2022', sourcemap: false, assetsInlineLimit: 0 },
 });

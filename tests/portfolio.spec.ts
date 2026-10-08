@@ -82,7 +82,7 @@ test('contact URLs are real and the CV is only linked when supplied', async ({ p
     await expect(page.locator('.cv-note')).toContainText('will be added');
     await expect(page.getByRole('link', { name: /Download.*CV/ })).toHaveCount(0);
   } else {
-    await expect(page.getByRole('link', { name: /Download.*CV/ })).toHaveAttribute('href', `/zidvn-portfolio/${profile.cv}`);
+    await expect(page.getByRole('link', { name: /Download.*CV/ })).toHaveAttribute('href', `/Z1D4N/${profile.cv}`);
   }
   await page.getByRole('button', { name: 'Copy email' }).click();
   await expect(page.locator('.copy-button')).toHaveText(/Email copied|Use the email link/);

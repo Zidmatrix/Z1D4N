@@ -4,7 +4,7 @@ The owner supplied the identity, contact details, education, reported exam passe
 
 ## Inspected GitHub account
 
-The public repositories page at `https://github.com/Zidmatrix?tab=repositories` was read on 2026-10-08. The existing `Z1D4N` checkout contains only a README and was left unchanged. Read-only Git access to that selected repository succeeded.
+The public repositories page at `https://github.com/Zidmatrix?tab=repositories` was read on 2026-10-08. GitHub API later confirmed the connected identity and accessible repositories. Z1D4N originally contained only a one-line README; the owner subsequently selected it as the destination for this technical portfolio. Its initial commit is preserved. Other existing repositories were left unchanged.
 
 Source checkouts of `A.Zidan`, `Abdul.Zidan`, `Abdulrahman-Zidan`, `Myweb` and `ccna-30day-roadmap` were inspected outside this project. The sales-focused websites were not altered or repurposed. A repository name or commit count was not used as evidence of a skill.
 

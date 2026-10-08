@@ -9,7 +9,11 @@
     "status": "Public source reviewed",
     "featured": true,
     "visual": "roadmap",
-    "tools": ["HTML", "JavaScript", "localStorage"],
+    "tools": [
+      "HTML",
+      "JavaScript",
+      "localStorage"
+    ],
     "repository": "https://github.com/Zidmatrix/ccna-30day-roadmap",
     "report": "ccna-roadmap",
     "evidence": "Source inspection confirms the interface and local progress functions. This is not evidence of completed CCNA labs.",
@@ -25,8 +29,12 @@
     "status": "Implementation available",
     "featured": true,
     "visual": "portfolio",
-    "tools": ["React", "TypeScript", "Vite"],
-    "repository": null,
+    "tools": [
+      "React",
+      "TypeScript",
+      "Vite"
+    ],
+    "repository": "https://github.com/Zidmatrix/Z1D4N",
     "report": "portfolio",
     "evidence": "Implementation and tests are included in this project. Publication status is recorded separately in the project log.",
     "contribution": "I supplied the identity, factual content and project requirements. AI assisted the design, implementation, editing and test preparation; personal review is pending."

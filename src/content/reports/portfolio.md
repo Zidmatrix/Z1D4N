@@ -10,7 +10,7 @@ Help a recruiter or technical reviewer understand my current stage and inspect a
 
 ## Scope and Environment
 
-React, TypeScript and Vite. JSON stores factual records; Markdown stores reports and journal entries. The build produces static files for the GitHub Pages project path `/zidvn-portfolio/`.
+React, TypeScript and Vite. JSON stores factual records; Markdown stores reports and journal entries. The build produces static files for the GitHub Pages project path `/Z1D4N/`.
 
 ## My Contribution and AI Assistance
 

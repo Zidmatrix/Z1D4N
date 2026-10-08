@@ -10,7 +10,7 @@ Computer Science Engineering student at Modern Academy, Maadi, with a primary fo
 ## Work to inspect
 
 - [CCNA Study Roadmap](https://github.com/Zidmatrix/ccna-30day-roadmap): a public browser-based study application. This link does not establish completed labs or independent authorship.
-- Technical portfolio: add its actual repository and deployed link after publication succeeds.
+- [Technical portfolio source](https://github.com/Zidmatrix/Z1D4N): publication status is recorded in the project log. Add the live site link only after deployment succeeds.
 
 ## Contact
 
