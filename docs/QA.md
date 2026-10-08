@@ -34,7 +34,7 @@ These show the **local production build**, not a deployed website:
 - Existing platform Git authentication successfully read `Zidmatrix/Z1D4N`.
 - After required domains became reachable, GitHub API confirmed that the connected account is `Zidmatrix`; its repository list contains the five public repositories reviewed and the private `Z1D4N` repository.
 - The owner replaced the new-repository destination with the existing `Zidmatrix/Z1D4N`. The original commit is preserved and the portfolio source was migrated into that checkout.
-- Pages read/create requests and the repository visibility update were rejected with **Resource not accessible by integration** (HTTP 403). The repository remains private and `has_pages` remains false according to the repository API.
+- Pages read/create requests and the repository visibility update were rejected with **Resource not accessible by integration** (HTTP 403). The owner subsequently changed the repository to public, confirmed by the API. A new Pages creation attempt still returned HTTP 403; Pages GET returned HTTP 404 and `has_pages` remained false.
 - The GitHub Pages workflow was checked against current official documentation and action tags. The build has `contents: read` and `pages: read`; deployment has `pages: write` and `id-token: write`. Configure-pages enablement requires a separate appropriately authorized token, so that option is not used to bypass the missing administration permission.
 - The source was pushed to `main` at `6b38a8be8360d8df6249cf102533428e4e41c2b2`. Remote run [37792572070](https://github.com/Zidmatrix/Z1D4N/actions/runs/37792572070) passed dependency installation, browser installation, production build and the test step. It failed at **Configure Pages** with **Not Found**, because Pages is not enabled. Artifact upload and deployment were skipped.
 - The actual `https://zidmatrix.github.io/Z1D4N/` request returned HTTP 404. No live site is claimed.
@@ -42,8 +42,10 @@ These show the **local production build**, not a deployed website:
 
 ## Unverified / awaiting outside action
 
-1. In the existing Z1D4N repository, use public visibility for free Pages and select **Settings → Pages → Source → GitHub Actions**. The integration could not apply either setting.
+1. Public visibility is now confirmed. In the existing Z1D4N repository, select **Settings → Pages → Source → GitHub Actions**; the integration could not enable Pages.
 2. Trigger the existing Pages workflow on `main`; inspect both the build and deployment jobs.
 3. After successful deployment, run `PORTFOLIO_TEST_URL=https://zidmatrix.github.io/Z1D4N/ npm run test:live` and inspect the deployed assets and links.
 
 Safari/iOS, Firefox, screen-reader review and real mail-client delivery were not tested. Automated accessibility checks do not replace manual assistive-technology testing. Existing CCNA app runtime behavior, exam issuer verification, the missing technical CV and unseen course-certificate image were not validated by these portfolio tests.
+
+Latest verification: [Actions run 37793109364](https://github.com/Zidmatrix/Z1D4N/actions/runs/37793109364) again passed the production build and browser-test steps, then failed at Configure Pages. Public visibility is confirmed; Pages activation remains the only publishing prerequisite.

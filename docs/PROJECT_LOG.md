@@ -10,7 +10,7 @@ Actual repository: `https://github.com/Zidmatrix/Z1D4N`.
 
 Intended Pages URL: `https://zidmatrix.github.io/Z1D4N/`.
 
-The site address remains a target until a deployment is verified. The repository currently remains private. The connected integration rejects Pages administration and repository visibility updates, so those settings require the owner's GitHub UI or an appropriately authorized connection.
+The site address remains a target until a deployment is verified. The owner changed the repository to public, confirmed by the repository API. Pages is not enabled yet. The connected integration still rejects Pages creation with HTTP 403, so selecting GitHub Actions as the publishing source requires the owner's GitHub UI or an appropriately authorized connection.
 
 ## Confirmed / owner-supplied information
 
@@ -63,7 +63,7 @@ GitHub Actions run [37792572070](https://github.com/Zidmatrix/Z1D4N/actions/runs
 
 The connected GitHub account is Zidmatrix. Repository and Actions-run reads work. Pages read/create and repository visibility updates were rejected as `Resource not accessible by integration` (HTTP 403). A reported administrator role does not give this integration those API permissions.
 
-For the requested zero-cost deployment, the owner can open Z1D4N **Settings → General → Danger Zone → Change repository visibility → Public**, then **Settings → Pages → Build and deployment → Source → GitHub Actions**. A private repository instead needs an existing plan that includes private-repository Pages; do not buy a plan. No token value is requested in chat. After settings change, recheck the actual state, run the existing workflow and verify the live site. Do not force-push or replace another site.
+The repository is now public, satisfying the free-hosting requirement. The remaining owner action is **Settings → Pages → Build and deployment → Source → GitHub Actions**. No visibility change or paid plan is needed. No token value is requested in chat. After settings change, recheck the actual state, run the existing workflow and verify the live site. Do not force-push or replace another site.
 
 ## Materials to add later
 
@@ -78,3 +78,5 @@ For the requested zero-cost deployment, the owner can open Z1D4N **Settings → 
 Read this log and QA first. Use `/workspace/Z1D4N` and its existing `origin`. Inspect the remote and current Actions runs; preserve the owner's changes and all local commits. After Pages settings are supplied, trigger the existing `pages.yml` workflow on main, inspect the actual run, test `https://zidmatrix.github.io/Z1D4N/`, then update the publication record and delivery links. Do not repeat the old request to create zidvn-portfolio; the owner has replaced that destination with Z1D4N.
 
 The current environment has Internet access and an active GitHub connection. The `install_script` and `start_skill` fields were saved as a draft using `/workspace/Z1D4N`. The draft needs environment review/save and publication to become active; this is separate from Pages deployment. Configuration saves do not prove website publication or restoration in a new task.
+
+Latest verification: [Actions run 37793109364](https://github.com/Zidmatrix/Z1D4N/actions/runs/37793109364) again passed the production build and browser-test steps, then failed at Configure Pages. Public visibility is confirmed; Pages activation remains the only publishing prerequisite.
