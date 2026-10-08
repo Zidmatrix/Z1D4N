@@ -70,7 +70,7 @@ Write `src/content/journal/<slug>.md` using [the journal template](docs/template
 
 ### Update contacts, portrait and CV
 
-Edit `profile.json`. Email and phone use real `mailto:` and `tel:` links. Set `linkedin` to your reviewed HTTPS profile URL; `null` hides it. The Contact section currently downloads the owner-supplied `Abdulrahman_Zidan_Junior_Penetration_Tester_CV.pdf` unchanged. To replace it, put the new PDF in `public/downloads/` and set `cv` to `downloads/<filename>.pdf`. The build rejects a missing file. Setting `cv` to `null` hides the download. The existing sales CV was not copied into this technical site.
+Edit `profile.json`. Email and phone use real `mailto:` and `tel:` links. Set `linkedin` to your reviewed HTTPS profile URL; `null` hides it. The Contact section displays the owner-supplied `Abdulrahman_Zidan_Junior_Penetration_Tester_CV.pdf` inside a responsive frame, with zoom, selectable text, Open PDF and Download CV controls. The preview renders the original PDF and its pages; it does not require a separate screenshot. To replace it, put the new PDF in `public/downloads/` and set `cv` to `downloads/<filename>.pdf`. Both preview and download use that file. The build rejects a missing file. Setting `cv` to `null` hides the preview and download. The existing sales CV was not copied into this technical site.
 
 Keep contact details you intend to make public. Do not add tokens, passwords, client information, lab credentials or unredacted company materials.
 

@@ -26,6 +26,8 @@ The CCNA report links the reviewed source at commit `7046ee3e82b925b1c4152e604ff
 
 Space Grotesk and Inter are self-hosted through their Fontsource packages, which include their upstream font license files. Lucide provides open-source interface icons. The diagrams and project card illustrations are original SVG/CSS interface compositions, not screenshots or evidence of completed work. See the installed packages for their respective open-source licenses. Exact dependency resolution and package integrity hashes are retained in `package-lock.json`.
 
+PDF.js (`pdfjs-dist` 6.4.299, Apache-2.0) renders the owner's original CV inside the website. Its renderer and worker are hosted under the same project path and loaded near the CV section. The text-selection CSS is adapted from its upstream viewer stylesheet. Its license is included at `public/licenses/pdfjs-LICENSE.txt`.
+
 ## Deployment documentation
 
 The official GitHub documentation source was fetched over verified HTTPS from:

@@ -196,6 +196,85 @@ test("contact URLs are real and the CV is only linked when supplied", async ({
   );
 });
 
+test("CV renders inside its frame, zooms and fits on phone and desktop", async ({
+  page,
+}) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.goto("./#cv");
+  const preview = page.getByRole("region", { name: profile.name, exact: true });
+  if (profile.cv === null) {
+    await expect(preview).toHaveCount(0);
+    return;
+  }
+  await expect(preview).toBeVisible();
+  const sheet = preview.locator(".cv-page").first();
+  await expect(sheet).toHaveAttribute("data-rendered", "true", {
+    timeout: 15000,
+  });
+  await expect(sheet.locator(".cv-text-layer")).toContainText(
+    "Abdulrahman Zidan",
+  );
+  await expect(preview.getByRole("link", { name: "Open PDF" })).toHaveAttribute(
+    "href",
+    `/Z1D4N/${profile.cv}`,
+  );
+  const documentArea = preview.getByRole("region", {
+    name: "CV document pages",
+  });
+  const originalWidth = await sheet.evaluate((element) => element.clientWidth);
+  expect(
+    await documentArea.evaluate(
+      (element) => element.scrollWidth <= element.clientWidth + 1,
+    ),
+  ).toBe(true);
+  const canvasHasInk = await sheet
+    .locator("canvas")
+    .evaluate((canvas: HTMLCanvasElement) => {
+      const pixels = canvas
+        .getContext("2d")!
+        .getImageData(0, 0, canvas.width, canvas.height).data;
+      let dark = 0;
+      for (let i = 0; i < pixels.length; i += 4) {
+        if (
+          pixels[i] < 100 &&
+          pixels[i + 1] < 100 &&
+          pixels[i + 2] < 100 &&
+          pixels[i + 3] > 0
+        )
+          dark++;
+      }
+      return dark > 500;
+    });
+  expect(
+    canvasHasInk,
+    "CV page should contain painted text, not a blank canvas",
+  ).toBe(true);
+  await preview.getByRole("button", { name: "Zoom in CV" }).click();
+  await expect(preview.locator(".cv-page-count")).toContainText("125%");
+  await expect(sheet).toHaveAttribute("data-rendered", "true");
+  expect(
+    await sheet.evaluate((element) => element.clientWidth),
+  ).toBeGreaterThan(originalWidth);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
+    ),
+  ).toBe(true);
+  await preview.getByRole("button", { name: "Fit to width" }).click();
+  await expect(preview.locator(".cv-page-count")).toContainText("100%");
+  await expect(sheet).toHaveAttribute("data-rendered", "true");
+  expect(await sheet.evaluate((element) => element.clientWidth)).toBe(
+    originalWidth,
+  );
+  const result = await new AxeBuilder({ page })
+    .include("#cv")
+    .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+    .analyze();
+  expect(result.violations).toEqual([]);
+  expect(errors).toEqual([]);
+});
+
 test("archive and training details expand without conflating certifications and courses", async ({
   page,
 }) => {

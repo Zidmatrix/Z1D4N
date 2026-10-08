@@ -4,7 +4,7 @@ Last updated: 2026-10-08 (Africa/Cairo user date).
 
 ## Current state
 
-The owner explicitly selected the existing `Zidmatrix/Z1D4N` repository. The portfolio is implemented and validated at `/workspace/Z1D4N`, with its initial commit, imported implementation history and the owner's later commits preserved. The independent local directory is a retained backup, not the active publishing target. Other repositories remain unchanged. The owner approved the design and colors and requested that building/testing take priority, with **publication left for the final phase**. The final local production suite passed 37 checks; no working live deployment is claimed.
+The owner explicitly selected the existing `Zidmatrix/Z1D4N` repository. The portfolio is implemented and validated at `/workspace/Z1D4N`, with its initial commit, imported implementation history and the owner's later commits preserved. The independent local directory is a retained backup, not the active publishing target. Other repositories remain unchanged. The owner approved the design and colors and requested that building/testing take priority, with **publication left for the final phase**. The original portfolio suite passed 37 checks; the subsequent framed-CV update passed nine focused checks and the production build. No working live deployment is claimed.
 
 Actual repository: `https://github.com/Zidmatrix/Z1D4N`.
 
@@ -57,6 +57,7 @@ The site address remains a target until a deployment is verified. Public reposit
 - Canonical/SEO URLs, report/download URLs, the test server path and the portfolio repository link now match Z1D4N. The configure-pages build step has the required read permission; only the deployment job has write permissions.
 - Reproducible setup refresh and local development/production startup checked.
 - The supplied junior penetration tester CV is stored unchanged in `public/downloads/` and linked by the existing Contact download control. Its provenance and checksum are in `SOURCES.md`; no broader factual-content edits were inferred from the upload. The production build and three focused contact/download checks passed after this update, including SHA-256 comparison of the actual browser downloads with the PDF.
+- The owner then requested that the CV be displayed inside the website with a frame. `CvPreview.tsx` renders the original PDF in Contact, using a self-hosted, lazily loaded PDF.js renderer/worker. The responsive frame includes zoom, fit-to-width, selectable text, Open PDF and Download CV. Nine focused browser checks passed, covering rendering, zoom, download integrity, accessibility and layouts. Replacing the PDF through `profile.json` automatically updates the displayed document.
 
 ## Remote validation history
 

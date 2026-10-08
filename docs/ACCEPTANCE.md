@@ -14,7 +14,7 @@ The owner approved the visual direction, design and colors on 2026-10-08 and req
 | Certifications and Training | Separate records for three reported exam passes and training; no invented dates, credential IDs or issuer verification |
 | Technical Experience and Education | Owner-reported training/practical use, Modern Academy degree as supplied, 2024–Present, expected 2028, GPA 3 with no denominator, reported 2026 award |
 | Learning Journal | Markdown entry and index, AI assistance disclosure, weekly-review template; no claim of an ongoing automatic reviewer |
-| Contact and downloads | Real email/phone/GitHub links, actual Markdown downloads and the owner-supplied original technical CV PDF; LinkedIn omitted until its URL is supplied |
+| Contact and downloads | Real email/phone/GitHub links, actual Markdown downloads and the owner-supplied CV displayed inside a responsive frame with zoom, selectable text, Open PDF and the unchanged PDF download; LinkedIn omitted until its URL is supplied |
 | Simple future content updates | JSON records, Markdown reports/journal, validated references; capability links resolve the referenced project's real report rather than a fixed list |
 | Project documentation | Objective, scope/environment, contribution, tools, observed implementation, evidence/results, limitations, remediation/retesting and lessons |
 | Keyboard and reduced motion | Visible focus, native navigation, menu Escape handling, modal focus cycle/restoration, OS reduced motion and persistent manual motion preference |

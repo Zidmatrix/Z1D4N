@@ -32,6 +32,7 @@ import {
 import NetworkVisual from "./components/NetworkVisual";
 import ProjectVisual from "./components/ProjectVisual";
 import ArticleDialog from "./components/ArticleDialog";
+import CvPreview from "./components/CvPreview";
 
 const nav = [
   { id: "work", name: "Work" },
@@ -827,8 +828,8 @@ export default function App() {
             <div className="cv-note">
               <FileText size={17} />
               {profile.cv ? (
-                <a href={asset(profile.cv)} download className="text-link">
-                  Download CV <ArrowDown size={15} />
+                <a href="#cv" className="text-link">
+                  View my CV <ArrowDown size={15} />
                 </a>
               ) : (
                 <span>
@@ -840,6 +841,7 @@ export default function App() {
           <div className="contact-mark" aria-hidden="true">
             Z<span>!</span>
           </div>
+          {profile.cv && <CvPreview src={asset(profile.cv)} name={profile.name} />}
         </section>
       </main>
       <footer className="site-footer">

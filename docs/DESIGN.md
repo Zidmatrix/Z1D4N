@@ -9,3 +9,5 @@ Interactions include keyboard-accessible node selection, category filtering, a s
 The normal pointer stays visible. Native scrolling is preserved; there is no scroll hijacking. OS reduced motion removes animation and smooth scrolling, and a persistent manual motion control offers the same option. Touch layouts retain the same content and controls. Fonts and portrait are served from the same project path.
 
 Content accuracy is part of the design: course completion is not presented as an issuer certification, source inspection is not presented as a completed lab, a missing CV does not produce a fake download, and AI assistance is stated in the relevant project report.
+
+The owner-supplied CV is displayed as its original document inside a dark frame with a fine mint border. The viewer includes zoom and fit controls, selectable text, and direct open/download links. It adapts to the available width and contains document scrolling when enlarged, preserving the normal page layout on phones. The rendering resources load only near this section.

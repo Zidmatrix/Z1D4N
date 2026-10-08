@@ -20,7 +20,7 @@ Validated locally on 2026-10-08. This record distinguishes the working local sit
 - axe WCAG 2 A/AA and WCAG 2.1 AA scans of the page, open dialog and expanded archive produced no reported violations in the tested contexts.
 - Visual inspection of desktop, phone, project-section and expanded-archive screenshots. Earlier navigation visibility and dialog lifecycle/focus defects were corrected before the final passing run.
 
-The production entry script is approximately 388 kB uncompressed / 120 kB gzip, the CSS about 35 kB / 8 kB gzip, both font files about 71 kB combined, and the portrait about 32 kB. These are build measurements, not a Lighthouse score. There is no WebGL dependency or third-party runtime font request.
+After adding the framed CV, the production entry script is approximately 394 kB uncompressed / 122 kB gzip and the CSS about 39 kB / 9 kB gzip. PDF.js adds a separate 430 kB / 129 kB gzip renderer chunk and a 1.26 MB uncompressed worker, fetched only near the CV section. Both font files total about 71 kB and the portrait about 32 kB. These are build measurements, not a Lighthouse score. There is no WebGL dependency or third-party runtime font/PDF-viewer request.
 
 ## Screenshots
 
@@ -31,6 +31,8 @@ These show the **local production build**, not a deployed website:
 - [Project section](screenshots/work.png)
 - [Desktop archive](screenshots/archive-desktop.png)
 - [Phone archive](screenshots/archive-mobile.png)
+- [Framed CV on desktop](screenshots/cv-desktop.png)
+- [Framed CV on phone](screenshots/cv-mobile.png)
 
 ## Owner-supplied CV update — 2026-10-08
 
@@ -38,6 +40,14 @@ These show the **local production build**, not a deployed website:
 - `npm run build` passed content validation, TypeScript and the production build after the CV/content update.
 - `npm test -- --grep 'contact URLs'`: **3 passed, 0 failed** in 6.4 seconds, covering desktop, mobile and reduced-motion contexts. Each test activated the real download link, checked the original filename and PDF signature, and compared the downloaded bytes by SHA-256 with the repository PDF.
 - This was focused validation of the update, not another run of the complete 37-check suite. Publication remains deferred.
+
+## Framed CV update — 2026-10-08
+
+- The original PDF renders inside the website with a responsive border/frame, selectable text, zoom/fit controls and real open/download links. The owner-supplied file remains unchanged.
+- `npm test -- --grep 'CV renders|contact URLs|layout fits'`: **9 passed, 0 failed** in 12.1 seconds, across desktop, mobile and reduced-motion contexts. The rendering test checks actual painted pixels and PDF text, zoom sizing and reset, document-scoped scrolling, no body overflow and no reported axe violations or page errors.
+- The contact tests still compare each downloaded PDF against the original by SHA-256. Layout checks cover 320, 390, 768, 1024 and 1440 pixels.
+- Browser probes confirmed no PDF resource requests at the top of the page, followed by successful self-hosted rendering at `#cv`. Rapid zoom changes and fit completed without a rendering fallback. Desktop/phone screenshots were visually reviewed.
+- Locked dependency installation, content validation, TypeScript and the production build passed with the PDF viewer. These are local production checks; no new live-publication claim is made.
 
 ## GitHub source and publication history
 
