@@ -1,0 +1,49 @@
+# Validation record
+
+Validated locally on 2026-10-08. This record distinguishes the working local site from remote publication.
+
+## Passed
+
+- Locked dependency installation with npm; Node.js 24.19.0, npm 11.9.0. The setup was also refreshed with `npm ci` without changing the lockfile.
+- Content validation: 2 actual projects, 4 capability areas, 3 owner-reported professional certifications, 3 training entries and 1 AI-assisted project note. Referenced portraits, optional downloads and Markdown paths are checked at build time.
+- TypeScript type checking and Vite 8.3.4 production build.
+- Functional startup of the development server: a browser selected the Systems node and received its expected explanation.
+- Final complete browser suite: **31 passed, 2 skipped, 0 failed**, using Chromium 151.0.7922.173. The skipped instances are the phone-menu test in the desktop and reduced-motion projects; the actual mobile-menu test passed.
+- Desktop, phone and reduced-motion contexts; additional layout checks at 320, 390, 768, 1024 and 1440 pixels with no horizontal overflow and the correct navigation-toggle visibility.
+- Actual image and self-hosted font loading, with no observed page errors or failed asset responses during the loading test.
+- Project filters, network-node keyboard activation, correct capability links, archive and training disclosures.
+- Markdown modal focus containment, Escape handling, focus restoration and an actual Markdown download.
+- Direct report and journal hash URLs, including a page refresh.
+- Real email, phone and GitHub destinations. Copy email either completes or shows its explicit fallback; no fake CV link is rendered.
+- OS reduced motion and a persistent manual motion preference.
+- axe WCAG 2 A/AA and WCAG 2.1 AA scans of the page and open dialog produced no reported violations in the tested contexts.
+- Visual inspection of desktop, phone and project-section screenshots. Earlier navigation visibility and dialog lifecycle/focus defects were corrected before the final passing run.
+
+The production entry script is approximately 386 kB uncompressed / 120 kB gzip, the CSS about 34 kB / 8 kB gzip, both font files about 71 kB combined, and the portrait about 32 kB. These are build measurements, not a Lighthouse score. There is no WebGL dependency or third-party runtime font request.
+
+## Screenshots
+
+These show the **local production build**, not a deployed website:
+
+- [Desktop](screenshots/desktop.png)
+- [Phone](screenshots/mobile.png)
+- [Project section](screenshots/work.png)
+
+## GitHub outcomes
+
+- Existing platform Git authentication successfully read `Zidmatrix/Z1D4N`.
+- After required domains became reachable, GitHub API confirmed that the connected account is `Zidmatrix`; its repository list contains the five public repositories reviewed and the private `Z1D4N` repository.
+- The requested `zidvn-portfolio` name was absent from that list. Its public page and Git remote also returned not found.
+- Repository creation through both `gh repo create` (GraphQL) and `POST /user/repos` (REST) was rejected with **Resource not accessible by integration**; REST returned HTTP 403.
+- The target Pages address returned HTTP 404. No repository, push, Pages activation, workflow run or live deployment is claimed.
+- GitHub Pages workflow configuration was checked against current official documentation and action tags. It has not executed remotely.
+- The existing selected repository and the other inspected sites were left unchanged.
+
+## Unverified / awaiting outside action
+
+1. Create the empty public `Zidmatrix/zidvn-portfolio` repository and grant the connected GitHub integration access, or provide an authorized connection that can create it.
+2. Inspect that remote before pushing. Push the existing local commits to `main`, enable Pages with GitHub Actions, and run the workflow.
+3. Inspect the build and deployment outcomes, then run `PORTFOLIO_TEST_URL=https://zidmatrix.github.io/zidvn-portfolio/ npm run test:live` and inspect the deployed assets and links.
+4. Add the actual portfolio repository link to `src/content/projects.json` only after the remote exists.
+
+Safari/iOS, Firefox, screen-reader review and real mail-client delivery were not tested. Automated accessibility checks do not replace manual assistive-technology testing. Existing CCNA app runtime behavior, exam issuer verification, the missing technical CV and unseen course-certificate image were not validated by these portfolio tests.
