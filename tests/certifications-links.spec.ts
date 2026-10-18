@@ -117,7 +117,7 @@ test("certificate and link layouts fit narrow phones, tablets and desktop; captu
   test.setTimeout(90000);
   mkdirSync("qa-results", { recursive: true });
   for (const width of [320, 390, 768, 1024, 1440]) {
-    await page.setViewportSize({ width, height: width >= 1024 ? 1000 : 900 });
+    await page.setViewportSize({ width, height: width === 1440 ? 1200 : width >= 1024 ? 1000 : 900 });
     await page.goto("./#certifications");
     for (const certificate of certificates.documents) {
       const preview = page.locator(`#${certificate.id}`);
@@ -128,7 +128,19 @@ test("certificate and link layouts fit narrow phones, tablets and desktop; captu
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Body overflow at ${width}px`).toBe(true);
     const columns = await page.locator(".certificate-gallery").evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(" ").length);
     expect(columns).toBe(width > 860 ? 2 : 1);
-    if ([390, 768, 1440].includes(width)) await page.locator("#certifications").screenshot({ path: `qa-results/certifications-${width}.png`, animations: "disabled" });
+    if (width === 1440) {
+      await page.locator("#certifications").evaluate((element) => window.scrollTo({ top: element.getBoundingClientRect().top + scrollY - 100, behavior: "instant" }));
+      await expect(page.locator('#certifications .cv-page[data-rendered="true"]')).toHaveCount(certificates.documents.length);
+      await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+      await page.screenshot({ path: "qa-results/certifications-1440.png", animations: "disabled" });
+    } else if ([390, 768].includes(width)) {
+      for (const certificate of certificates.documents) {
+        const preview = page.locator(`#${certificate.id}`);
+        await preview.evaluate((element) => element.scrollIntoView({ block: "center", behavior: "instant" }));
+        await expect(preview.locator(".cv-page")).toHaveAttribute("data-rendered", "true");
+        await preview.screenshot({ path: `qa-results/certifications-${width}-${certificate.id}.png`, animations: "disabled" });
+      }
+    }
     await page.locator("#links").scrollIntoViewIfNeeded();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Link overflow at ${width}px`).toBe(true);
     if ([390, 768, 1440].includes(width)) await page.locator("#links").screenshot({ path: `qa-results/links-${width}.png`, animations: "disabled" });
