@@ -1,9 +1,26 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import certificates from "../src/content/certifications.json" with { type: "json" };
 import links from "../src/content/links.json" with { type: "json" };
 import profile from "../src/content/profile.json" with { type: "json" };
 import { mkdirSync } from "node:fs";
+
+async function expectCurrentSection(page: Page, id: string) {
+  try {
+    await expect(page.locator(`#main-navigation a[href="#${id}"]`)).toHaveAttribute("aria-current", "location");
+  } catch (error) {
+    console.log("Navigation diagnostics:", await page.evaluate(() => ({
+      viewport: [innerWidth, innerHeight],
+      scrollY,
+      sections: Array.from(document.querySelectorAll<HTMLAnchorElement>('#main-navigation a[href^="#"]')).map((link) => ({
+        hash: link.hash,
+        current: link.getAttribute("aria-current"),
+        top: document.querySelector(link.hash)?.getBoundingClientRect().top,
+      })),
+    })));
+    throw error;
+  }
+}
 
 test("certificates have their own section, render inline and offer viewing controls only", async ({ page }) => {
   const errors: string[] = [];
@@ -119,6 +136,7 @@ test("certificate and link layouts fit narrow phones, tablets and desktop; captu
   for (const width of [320, 390, 768, 1024, 1440]) {
     await page.setViewportSize({ width, height: width === 1440 ? 1200 : width >= 1024 ? 1000 : 900 });
     await page.goto("./#certifications");
+    await page.evaluate(() => document.fonts.ready);
     for (const certificate of certificates.documents) {
       const preview = page.locator(`#${certificate.id}`);
       await preview.scrollIntoViewIfNeeded();
@@ -130,7 +148,7 @@ test("certificate and link layouts fit narrow phones, tablets and desktop; captu
     expect(columns).toBe(width > 860 ? 2 : 1);
     if (width === 1440) {
       await page.locator("#certifications").evaluate((element) => window.scrollTo({ top: element.getBoundingClientRect().top + scrollY - 100, behavior: "instant" }));
-      await expect(page.locator('#main-navigation a[href="#certifications"]')).toHaveAttribute("aria-current", "location");
+      await expectCurrentSection(page, "certifications");
       await expect(page.locator('#certifications .cv-page[data-rendered="true"]')).toHaveCount(certificates.documents.length);
       await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
       await page.screenshot({ path: "qa-results/certifications-1440.png", animations: "disabled" });
@@ -159,12 +177,12 @@ test("active navigation follows the visible section after viewport resizing", as
   for (const [width, height] of [[1440, 900], [390, 844]]) {
     await page.setViewportSize({ width, height });
     await page.goto("./#certifications");
-    const certificatesLink = page.locator('#main-navigation a[href="#certifications"]');
-    const profilesLink = page.locator('#main-navigation a[href="#links"]');
-    await expect(certificatesLink).toHaveAttribute("aria-current", "location");
+    await page.evaluate(() => document.fonts.ready);
+    await page.locator("#certifications").evaluate((element) => window.scrollTo({ top: element.getBoundingClientRect().top + scrollY - 100, behavior: "instant" }));
+    await expectCurrentSection(page, "certifications");
     await page.locator("#links").evaluate((element) => window.scrollTo({ top: element.getBoundingClientRect().top + scrollY - 100, behavior: "instant" }));
-    await expect(profilesLink).toHaveAttribute("aria-current", "location");
+    await expectCurrentSection(page, "links");
     await page.setViewportSize({ width, height: height + 160 });
-    await expect(profilesLink).toHaveAttribute("aria-current", "location");
+    await expectCurrentSection(page, "links");
   }
 });

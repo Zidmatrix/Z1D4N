@@ -99,26 +99,27 @@ export default function App() {
       setMobileOpen(false);
     };
     window.addEventListener("hashchange", listener);
-    let observer: IntersectionObserver | undefined;
-    const observeNavigation = () => {
-      observer?.disconnect();
-      const current = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries)
-            if (entry.isIntersecting) setActive(entry.target.id);
-        },
-        {
-          rootMargin: `-${Math.round(window.innerHeight * 0.15)}px 0px -${Math.round(window.innerHeight * 0.65)}px 0px`,
-        },
-      );
-      observer = current;
-      nav.forEach((item) => {
+    let navigationFrame: number | undefined;
+    const refreshNavigation = () => {
+      navigationFrame = undefined;
+      const marker = Math.max(220, Math.min(window.innerHeight * 0.3, 320));
+      let current = "";
+      for (const item of nav) {
         const element = document.getElementById(item.id);
-        if (element) current.observe(element);
-      });
+        if (element && element.getBoundingClientRect().top <= marker)
+          current = item.id;
+      }
+      setActive(current);
     };
-    observeNavigation();
-    window.addEventListener("resize", observeNavigation);
+    const scheduleNavigation = () => {
+      if (navigationFrame === undefined)
+        navigationFrame = requestAnimationFrame(refreshNavigation);
+    };
+    refreshNavigation();
+    window.addEventListener("scroll", scheduleNavigation, { passive: true });
+    window.addEventListener("resize", scheduleNavigation);
+    const layoutObserver = new ResizeObserver(scheduleNavigation);
+    layoutObserver.observe(document.getElementById("main")!);
     const media = matchMedia("(prefers-reduced-motion: reduce)");
     const onMotion = () => setSystemReduced(media.matches);
     media.addEventListener("change", onMotion);
@@ -134,8 +135,10 @@ export default function App() {
     document.addEventListener("keydown", onEscape);
     return () => {
       window.removeEventListener("hashchange", listener);
-      observer?.disconnect();
-      window.removeEventListener("resize", observeNavigation);
+      window.removeEventListener("scroll", scheduleNavigation);
+      window.removeEventListener("resize", scheduleNavigation);
+      layoutObserver.disconnect();
+      if (navigationFrame !== undefined) cancelAnimationFrame(navigationFrame);
       media.removeEventListener("change", onMotion);
       document.removeEventListener("keydown", onEscape);
       clearTimeout(copyTimer.current);
