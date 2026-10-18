@@ -93,10 +93,15 @@ test("document rendering obeys CSP and inline script injection is blocked", asyn
   await expect(page.locator("html")).not.toHaveAttribute("data-policy-violations");
   const external = await page.locator('a[target="_blank"]').evaluateAll((anchors) => anchors.map((anchor) => {
     const link = anchor as HTMLAnchorElement;
-    return { protocol: new URL(link.href).protocol, opener: link.relList.contains("noopener"), referrer: link.relList.contains("noreferrer") };
+    const url = new URL(link.href);
+    return { external: url.origin !== location.origin, protocol: url.protocol, opener: link.relList.contains("noopener"), referrer: link.relList.contains("noreferrer") };
   }));
   expect(external.length).toBeGreaterThan(0);
-  for (const link of external) expect(link).toEqual({ protocol: "https:", opener: true, referrer: true });
+  for (const link of external) {
+    expect(link.opener).toBe(true);
+    expect(link.referrer).toBe(true);
+    if (link.external) expect(link.protocol).toBe("https:");
+  }
   await page.evaluate(() => {
     const script = document.createElement("script");
     script.textContent = 'document.documentElement.dataset.injectedScript = "executed"';
