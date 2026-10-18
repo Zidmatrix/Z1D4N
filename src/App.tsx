@@ -99,17 +99,26 @@ export default function App() {
       setMobileOpen(false);
     };
     window.addEventListener("hashchange", listener);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries)
-          if (entry.isIntersecting) setActive(entry.target.id);
-      },
-      { rootMargin: "-15% 0px -65% 0px" },
-    );
-    nav.forEach((item) => {
-      const element = document.getElementById(item.id);
-      if (element) observer.observe(element);
-    });
+    let observer: IntersectionObserver | undefined;
+    const observeNavigation = () => {
+      observer?.disconnect();
+      const current = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries)
+            if (entry.isIntersecting) setActive(entry.target.id);
+        },
+        {
+          rootMargin: `-${Math.round(window.innerHeight * 0.15)}px 0px -${Math.round(window.innerHeight * 0.65)}px 0px`,
+        },
+      );
+      observer = current;
+      nav.forEach((item) => {
+        const element = document.getElementById(item.id);
+        if (element) current.observe(element);
+      });
+    };
+    observeNavigation();
+    window.addEventListener("resize", observeNavigation);
     const media = matchMedia("(prefers-reduced-motion: reduce)");
     const onMotion = () => setSystemReduced(media.matches);
     media.addEventListener("change", onMotion);
@@ -125,7 +134,8 @@ export default function App() {
     document.addEventListener("keydown", onEscape);
     return () => {
       window.removeEventListener("hashchange", listener);
-      observer.disconnect();
+      observer?.disconnect();
+      window.removeEventListener("resize", observeNavigation);
       media.removeEventListener("change", onMotion);
       document.removeEventListener("keydown", onEscape);
       clearTimeout(copyTimer.current);

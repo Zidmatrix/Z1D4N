@@ -130,6 +130,7 @@ test("certificate and link layouts fit narrow phones, tablets and desktop; captu
     expect(columns).toBe(width > 860 ? 2 : 1);
     if (width === 1440) {
       await page.locator("#certifications").evaluate((element) => window.scrollTo({ top: element.getBoundingClientRect().top + scrollY - 100, behavior: "instant" }));
+      await expect(page.locator('#main-navigation a[href="#certifications"]')).toHaveAttribute("aria-current", "location");
       await expect(page.locator('#certifications .cv-page[data-rendered="true"]')).toHaveCount(certificates.documents.length);
       await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
       await page.screenshot({ path: "qa-results/certifications-1440.png", animations: "disabled" });
@@ -152,4 +153,18 @@ test("legacy credentials bookmarks resolve to the dedicated certificate section"
   await expect(page.locator("#certifications")).toBeVisible();
   await expect(page.locator("#credentials")).toHaveCount(1);
   expect(await page.locator("#credentials").evaluate((element) => element.closest("section")?.id)).toBe("certifications");
+});
+
+test("active navigation follows the visible section after viewport resizing", async ({ page }) => {
+  for (const [width, height] of [[1440, 900], [390, 844]]) {
+    await page.setViewportSize({ width, height });
+    await page.goto("./#certifications");
+    const certificatesLink = page.locator('#main-navigation a[href="#certifications"]');
+    const profilesLink = page.locator('#main-navigation a[href="#links"]');
+    await expect(certificatesLink).toHaveAttribute("aria-current", "location");
+    await page.locator("#links").evaluate((element) => window.scrollTo({ top: element.getBoundingClientRect().top + scrollY - 100, behavior: "instant" }));
+    await expect(profilesLink).toHaveAttribute("aria-current", "location");
+    await page.setViewportSize({ width, height: height + 160 });
+    await expect(profilesLink).toHaveAttribute("aria-current", "location");
+  }
 });
