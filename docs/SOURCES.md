@@ -36,3 +36,14 @@ The official GitHub documentation source was fetched over verified HTTPS from:
 - Official `actions/checkout` and `actions/setup-node` README files.
 
 Current action tags were resolved through read-only Git operations and pinned to their full SHAs in the workflow. This review established the workflow configuration, not a successful Actions run.
+
+## Owner-supplied certificates - 2026-10-18
+
+The owner supplied both files and requested inline display on the public portfolio. They are copied unchanged into `public/certificates/`.
+
+- The NetRiders image was visually reviewed. It is a CompTIA Sec+ SY0-701 **course completion** certificate for Abdulrahman Mahmoud Zidan, instructor Ahmed Sultan, ID NTR-701-483927. This training ID is not used as a CompTIA exam credential ID.
+- The original EF SET PDF was rendered and visually reviewed. It states C2 Proficient, 81/100 overall, 81/100 Reading and 81/100 Listening, awarded 01 Oct 2026. The portfolio limits the assessment scope to reading and listening. The PDF contains `cert.efset.org/dLQ16M`; no external verification claim was added.
+- Both previews use the same document-frame component as the CV, with distinct IDs, labels, local asset URLs and independent zoom controls. The EF SET original PDF is rendered using the existing self-hosted PDF.js runtime; the NetRiders original JPEG is displayed as an image.
+
+- `Abdulrahman-Zidan-EF-SET-C2.pdf`: SHA-256 `a5ae286f711638318e5fda6ac8bba24540630c9dc6365ee2576e88d7e565eeb8` (80080 bytes).
+- `Abdulrahman-Zidan-Security-Plus-NetRiders.jpeg`: SHA-256 `4a65abfe474231daf3d972c0323a0bf9d3ebe2f48a28a02d88678abb71a7810c` (300160 bytes).

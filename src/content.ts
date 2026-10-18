@@ -13,12 +13,18 @@ export type Project = {
 export type Profile = Omit<typeof profileData, 'linkedin' | 'cv'> & { linkedin: string | null; cv: string | null };
 export type Capability = typeof capabilityData[number];
 export type Article = { id: string; title: string; kind: 'report' | 'journal'; body: string; download: string };
+export type CredentialDocument = {
+  id: string; name: string; label: string; eyebrow: string; kind: 'pdf' | 'image';
+  src: string; description: string; imageAlt: string | null;
+};
 export const profile = profileData as Profile;
 export const capabilities = capabilityData;
 export const projects: Project[] = projectData;
 export const certifications = certificationData as {
   professional: Array<Omit<typeof certificationData.professional[number], 'verification'> & { verification: string | null }>;
   training: Array<Omit<typeof certificationData.training[number], 'url'> & { url: string | null }>;
+  english: typeof certificationData.english;
+  documents: CredentialDocument[];
 };
 export const experience = experienceData;
 export const journal = journalData;

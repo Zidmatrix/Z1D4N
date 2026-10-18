@@ -50,6 +50,26 @@ for (const certificate of certificates.professional) {
   url(certificate.verification, 'Issuer verification');
 }
 for (const item of certificates.training) { requiredText(item.evidence, 'Training evidence context'); url(item.url, 'Training evidence URL'); }
+unique(certificates.documents, 'Certificate documents');
+for (const document of certificates.documents) {
+  slug(document.id, 'Certificate document ID');
+  ['name', 'label', 'eyebrow', 'description'].forEach((key) => requiredText(document[key], `document.${key}`));
+  assert(['pdf', 'image'].includes(document.kind), 'Certificate preview must be a PDF or image');
+  localFile(document.src, 'Certificate document');
+  if (document.kind === 'pdf') assert(document.src.endsWith('.pdf'), 'PDF preview needs a PDF file');
+  if (document.kind === 'image') {
+    requiredText(document.imageAlt, 'Certificate image alt text');
+    assert(/\.(jpe?g|png|webp)$/i.test(document.src), 'Image preview needs an image file');
+  }
+}
+for (const item of certificates.training) {
+  assert(item.document === null || certificates.documents.some((document) => document.id === item.document), 'Training preview refers to an unknown document');
+}
+const english = certificates.english;
+['provider', 'level', 'cefr', 'scope'].forEach((key) => requiredText(english[key], `english.${key}`));
+for (const key of ['score', 'reading', 'listening']) assert(Number.isInteger(english[key]) && english[key] >= 0 && english[key] <= 100, `english.${key} must be a score out of 100`);
+assert(/^\d{4}-\d{2}-\d{2}$/.test(english.awarded) && new Date(english.awarded).toISOString().startsWith(english.awarded), 'English certificate date must be a real ISO date');
+assert(certificates.documents.some((document) => document.id === english.document), 'English certificate preview is missing');
 const journal = read('journal'); unique(journal, 'Journal');
 for (const entry of journal) {
   slug(entry.id, 'Journal ID');

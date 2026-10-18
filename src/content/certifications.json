@@ -1,12 +1,93 @@
 {
   "professional": [
-    { "id": "security-plus", "name": "Security+", "issuer": "CompTIA", "mark": "S+", "focus": "Security foundations", "status": "Exam passed · owner reported", "verification": null },
-    { "id": "ccna", "name": "CCNA", "issuer": "Cisco", "mark": "CC", "focus": "Networking foundations", "status": "Exam passed · owner reported", "verification": null },
-    { "id": "a-plus", "name": "A+", "issuer": "CompTIA", "mark": "A+", "focus": "IT foundations", "status": "Exam passed · owner reported", "verification": null }
+    {
+      "id": "security-plus",
+      "name": "Security+",
+      "issuer": "CompTIA",
+      "mark": "S+",
+      "focus": "Security foundations",
+      "status": "Exam passed · owner reported",
+      "verification": null
+    },
+    {
+      "id": "ccna",
+      "name": "CCNA",
+      "issuer": "Cisco",
+      "mark": "CC",
+      "focus": "Networking foundations",
+      "status": "Exam passed · owner reported",
+      "verification": null
+    },
+    {
+      "id": "a-plus",
+      "name": "A+",
+      "issuer": "CompTIA",
+      "mark": "A+",
+      "focus": "IT foundations",
+      "status": "Exam passed · owner reported",
+      "verification": null
+    }
   ],
   "training": [
-    { "id": "it-gate", "name": "Networking training", "provider": "IT Gate", "detail": "Networking training, as reported by me. Dates and detailed scope will be added after review.", "evidence": "Owner reported · supporting material pending", "url": null },
-    { "id": "netriders", "name": "CompTIA Sec+ SY0-701 course", "provider": "NetRiders", "detail": "Course completion reported in the supplied brief. Name on the described certificate: Abdulrahman Mahmoud Zidan. Instructor: Ahmed Sultan.", "evidence": "Certificate image not supplied in this session", "url": null },
-    { "id": "security-labs", "name": "Security+ study labs", "provider": "Independent study", "detail": "Training exercises undertaken during Security+ study. Scope, artifacts and results will be added as individual reports.", "evidence": "Owner reported · public reports pending", "url": null }
+    {
+      "id": "it-gate",
+      "name": "Networking training",
+      "provider": "IT Gate",
+      "detail": "Networking training, as reported by me. Dates and detailed scope will be added after review.",
+      "evidence": "Owner reported · supporting material pending",
+      "url": null,
+      "document": null
+    },
+    {
+      "id": "netriders",
+      "name": "CompTIA Sec+ SY0-701 course",
+      "provider": "NetRiders",
+      "detail": "Completed the CompTIA Sec+ SY0-701 course with NetRiders. Certificate awarded to Abdulrahman Mahmoud Zidan; instructor: Ahmed Sultan.",
+      "evidence": "Course completion certificate · ID NTR-701-483927",
+      "url": null,
+      "document": "security-plus-certificate"
+    },
+    {
+      "id": "security-labs",
+      "name": "Security+ study labs",
+      "provider": "Independent study",
+      "detail": "Training exercises undertaken during Security+ study. Scope, artifacts and results will be added as individual reports.",
+      "evidence": "Owner reported · public reports pending",
+      "url": null,
+      "document": null
+    }
+  ],
+  "english": {
+    "provider": "EF SET",
+    "level": "C2 Proficient",
+    "cefr": "C2",
+    "score": 81,
+    "reading": 81,
+    "listening": 81,
+    "awarded": "2026-10-01",
+    "scope": "Reading and listening",
+    "document": "english-certificate"
+  },
+  "documents": [
+    {
+      "id": "security-plus-certificate",
+      "name": "CompTIA Sec+ SY0-701",
+      "label": "Security+ certificate",
+      "eyebrow": "NETRIDERS · COURSE COMPLETION",
+      "kind": "image",
+      "src": "certificates/Abdulrahman-Zidan-Security-Plus-NetRiders.jpeg",
+      "description": "NetRiders course completion · Abdulrahman Mahmoud Zidan · Instructor: Ahmed Sultan · Certificate ID: NTR-701-483927.",
+      "imageAlt": "NetRiders certificate of completion for Abdulrahman Mahmoud Zidan: CompTIA Sec+ SY0-701, instructor Ahmed Sultan, certificate ID NTR-701-483927."
+    },
+    {
+      "id": "english-certificate",
+      "name": "EF SET · C2 Proficient",
+      "label": "English certificate",
+      "eyebrow": "EF SET · ENGLISH PROFICIENCY",
+      "kind": "pdf",
+      "src": "certificates/Abdulrahman-Zidan-EF-SET-C2.pdf",
+      "description": "81/100 overall · Reading: 81/100 · Listening: 81/100 · CEFR C2 Proficient · Awarded 01 Oct 2026.",
+      "imageAlt": null
+    }
   ]
 }

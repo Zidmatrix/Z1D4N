@@ -10,6 +10,7 @@ import {
   FileText,
   GitBranch as Github,
   GraduationCap,
+  Languages,
   MapPin,
   Menu,
   Network,
@@ -33,6 +34,7 @@ import NetworkVisual from "./components/NetworkVisual";
 import ProjectVisual from "./components/ProjectVisual";
 import ArticleDialog from "./components/ArticleDialog";
 import CvPreview from "./components/CvPreview";
+import DocumentPreview from "./components/DocumentPreview";
 
 const nav = [
   { id: "work", name: "Work" },
@@ -269,6 +271,10 @@ export default function App() {
             <div>
               <Cpu size={17} />
               <span>CompTIA A+</span>
+            </div>
+            <div>
+              <Languages size={17} />
+              <span>English · {certifications.english.cefr}</span>
             </div>
             <a href="#credentials">
               View credentials <ArrowUpRight size={15} />
@@ -573,9 +579,9 @@ export default function App() {
                 <h2 id="credentials-title">The foundations matter.</h2>
               </div>
               <p>
-                Professional exams and training are different.
+                Security foundations and English proficiency.
                 <br />
-                You’ll find them clearly separated here.
+                Explore my certificates below.
               </p>
             </div>
             <div className="subsection-heading">
@@ -595,6 +601,14 @@ export default function App() {
                   <h4>{cert.name}</h4>
                   <p>{cert.focus}</p>
                   <span className="cert-status">{cert.status}</span>
+                  {cert.id === "security-plus" && (
+                    <a
+                      className="text-link cert-preview-link"
+                      href="#security-plus-certificate"
+                    >
+                      View course certificate <ArrowDown size={16} />
+                    </a>
+                  )}
                   {cert.verification && (
                     <a
                       className="text-link"
@@ -627,6 +641,11 @@ export default function App() {
                   <div className="training-detail">
                     <p>{training.detail}</p>
                     <span className="micro">{training.evidence}</span>
+                    {training.document && (
+                      <a className="text-link" href={`#${training.document}`}>
+                        View certificate below <ArrowDown size={15} />
+                      </a>
+                    )}
                     {training.url && (
                       <a
                         className="text-link"
@@ -639,6 +658,49 @@ export default function App() {
                     )}
                   </div>
                 </details>
+              ))}
+            </div>
+            <section className="language-card" aria-labelledby="english-title">
+              <div className="language-copy">
+                <span className="micro">
+                  {certifications.english.provider} · ENGLISH PROFICIENCY
+                </span>
+                <h3 id="english-title">{certifications.english.level}</h3>
+                <p>
+                  {certifications.english.scope} · CEFR {certifications.english.cefr}
+                </p>
+                <a className="text-link" href={`#${certifications.english.document}`}>
+                  View English certificate <ArrowDown size={15} />
+                </a>
+              </div>
+              <dl className="language-scores">
+                <div>
+                  <dt>Overall</dt>
+                  <dd>{certifications.english.score}<span>/100</span></dd>
+                </div>
+                <div>
+                  <dt>Reading</dt>
+                  <dd>{certifications.english.reading}<span>/100</span></dd>
+                </div>
+                <div>
+                  <dt>Listening</dt>
+                  <dd>{certifications.english.listening}<span>/100</span></dd>
+                </div>
+              </dl>
+            </section>
+            <div className="credential-documents">
+              {certifications.documents.map((document) => (
+                <DocumentPreview
+                  key={document.id}
+                  id={document.id}
+                  src={asset(document.src)}
+                  name={document.name}
+                  label={document.label}
+                  eyebrow={document.eyebrow}
+                  kind={document.kind}
+                  description={document.description}
+                  imageAlt={document.imageAlt ?? undefined}
+                />
               ))}
             </div>
           </div>

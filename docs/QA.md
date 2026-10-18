@@ -68,3 +68,11 @@ On 2026-10-08 the owner approved the design/colors and asked to focus on buildin
 In the publication phase, recheck the actual Pages source and current Actions runs, use the existing Actions workflow, resolve any remaining settings/deployment issue, and test the actual production site with `PORTFOLIO_TEST_URL=https://zidmatrix.github.io/Z1D4N/ npm run test:live`. Preserve certificate validation. A successful local build, HTTP 200 or branch-based Jekyll job alone does not complete that phase.
 
 Safari/iOS, Firefox, screen-reader review and real mail-client delivery were not tested. Automated accessibility checks do not replace manual assistive-technology testing. Existing CCNA app runtime behavior, exam issuer verification, the factual claims within the owner-supplied CV and unseen course-certificate image were not validated by these portfolio tests.
+
+## Certificate update - 2026-10-18
+
+- Locked dependency installation and `npm run build` passed, including content validation, TypeScript and the Vite production build. The validator now checks both certificate paths, descriptions, image alt text, document references and English assessment scores/date.
+- The supplied certificate image and a rendered page of the EF SET PDF were visually inspected. Original upload bytes match the repository copies and built copies exactly.
+- The CV and certificate frames share `DocumentPreview.tsx`; the original CV IDs, labels, download URL, PDF text layer and zoom controls are retained. Certificate viewing is inline, with local downloads as an additional option.
+- Local browser QA was unavailable in this session. The existing GitHub Actions workflow runs its production browser suite before deployment. Its result is reported separately after the push; previous test counts above are historical.
+- Before this update, GitHub reported successful build/deploy run 37800048451 for commit 7e3023aca2edd3882ade72e7ea9a5a638bca4a3b. The live URL returned HTTP 200 with a compiled Vite entry script rather than unbuilt source. This supersedes the older publication blockers recorded above.
