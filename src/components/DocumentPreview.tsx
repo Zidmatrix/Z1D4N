@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUpRight, FileText, Minus, Plus } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Eye, FileText, Minus, Plus } from "lucide-react";
 import type {
   PDFDocumentLoadingTask,
   PDFDocumentProxy,
@@ -129,6 +129,7 @@ export default function DocumentPreview({
   description,
   showOpenLink = false,
   imageAlt,
+  viewOnly = false,
 }: {
   id: string;
   src: string;
@@ -139,6 +140,7 @@ export default function DocumentPreview({
   description?: string;
   showOpenLink?: boolean;
   imageAlt?: string;
+  viewOnly?: boolean;
 }) {
   const frame = useRef<HTMLElement>(null);
   const viewport = useRef<HTMLDivElement>(null);
@@ -204,7 +206,7 @@ export default function DocumentPreview({
   return (
     <section
       id={id}
-      className="cv-preview"
+      className={viewOnly ? "cv-preview certificate-preview" : "cv-preview"}
       ref={frame}
       aria-labelledby={`${id}-title`}
       aria-describedby={description ? `${id}-description` : undefined}
@@ -219,16 +221,22 @@ export default function DocumentPreview({
             <h3 id={`${id}-title`}>{name}</h3>
           </div>
         </div>
-        <div className="cv-actions">
-          {showOpenLink && (
-            <a href={src} target="_blank" rel="noreferrer" className="text-link">
-              Open PDF <ArrowUpRight size={15} />
+        {viewOnly ? (
+          <span className="document-view-only">
+            <Eye size={13} aria-hidden="true" /> View only
+          </span>
+        ) : (
+          <div className="cv-actions">
+            {showOpenLink && (
+              <a href={src} target="_blank" rel="noopener noreferrer" className="text-link">
+                Open PDF <ArrowUpRight size={15} />
+              </a>
+            )}
+            <a href={src} download className="text-link cv-download">
+              Download {label} <ArrowDown size={15} />
             </a>
-          )}
-          <a href={src} download className="text-link cv-download">
-            Download {label} <ArrowDown size={15} />
-          </a>
-        </div>
+          </div>
+        )}
       </header>
       {description && (
         <p className="document-description" id={`${id}-description`}>
@@ -283,7 +291,9 @@ export default function DocumentPreview({
         >
           {failed ? (
             <p className="cv-loading" role="alert">
-              The preview could not be loaded. Download the {label} to read it.
+              {viewOnly
+                ? "The preview could not be loaded. Please refresh the page to try again."
+                : `The preview could not be loaded. Download the ${label} to read it.`}
             </p>
           ) : kind === "image" && nearby && fitWidth > 0 ? (
             <div

@@ -7,7 +7,13 @@ const read = (name) => JSON.parse(readFileSync(resolve(root, 'src/content', `${n
 const requiredText = (value, label) => assert(typeof value === 'string' && value.trim().length > 0, `${label} must be nonempty text`);
 const slug = (value, label) => assert(typeof value === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value), `${label} must be a lowercase hyphenated slug`);
 const unique = (items, label) => assert.equal(new Set(items.map((x) => x.id)).size, items.length, `${label} IDs must be unique`);
-const url = (value, label) => { if (value !== null) { requiredText(value, label); assert.equal(new URL(value).protocol, 'https:', `${label} must use HTTPS`); } };
+const url = (value, label) => {
+  if (value === null) return;
+  requiredText(value, label);
+  const parsed = new URL(value);
+  assert.equal(parsed.protocol, 'https:', `${label} must use HTTPS`);
+  assert(!parsed.username && !parsed.password, `${label} must not contain credentials`);
+};
 const localFile = (value, label) => {
   requiredText(value, label);
   assert(!value.includes('..') && !value.startsWith('/') && !value.includes(':'), `${label} must be a safe relative path`);
@@ -25,6 +31,13 @@ const profile = read('profile');
 assert(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(profile.email), 'Email must be valid');
 assert(/^\+[1-9]\d{7,14}$/.test(profile.phone), 'Phone must use international format');
 url(profile.github, 'GitHub'); url(profile.linkedin, 'LinkedIn');
+const links = read('links');
+unique([{ id: 'github' }, { id: 'linkedin' }, ...links], 'Profile links');
+for (const link of links) {
+  slug(link.id, 'Profile link ID');
+  requiredText(link.name, 'Profile website name');
+  url(link.url, `Profile link ${link.name}`);
+}
 localFile(profile.portrait, 'Portrait');
 if (profile.cv !== null) { localFile(profile.cv, 'CV'); assert(profile.cv.endsWith('.pdf'), 'CV must be a reviewed PDF'); }
 

@@ -282,7 +282,7 @@ test("archive and training details expand without conflating certifications and 
   await page.locator(".archive summary").click();
   await expect(page.locator(".archive-row")).toHaveCount(projects.length);
   await expect(page.locator(".archive-content")).toBeVisible();
-  await page.locator("#credentials").scrollIntoViewIfNeeded();
+  await page.locator("#qualifications").scrollIntoViewIfNeeded();
   await page
     .locator(".training-item")
     .filter({ hasText: "NetRiders" })
@@ -360,9 +360,9 @@ test("phone navigation opens, follows a link and restores focus on Escape", asyn
   await expect(page.locator("#main-navigation")).toBeVisible();
   await page
     .locator("#main-navigation")
-    .getByRole("link", { name: "Credentials", exact: true })
+    .getByRole("link", { name: "Certifications", exact: true })
     .click();
-  await expect(page).toHaveURL(/#credentials$/);
+  await expect(page).toHaveURL(/#certifications$/);
   await expect(page.locator("#main-navigation")).not.toBeVisible();
   await page.getByRole("button", { name: "Open navigation" }).click();
   await page.keyboard.press("Escape");

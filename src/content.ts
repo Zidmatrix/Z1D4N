@@ -4,6 +4,7 @@ import projectData from './content/projects.json';
 import certificationData from './content/certifications.json';
 import experienceData from './content/experience.json';
 import journalData from './content/journal.json';
+import linkData from './content/links.json';
 
 export type Project = {
   id: string; title: string; subtitle: string; summary: string; category: string;
@@ -18,6 +19,11 @@ export type CredentialDocument = {
   src: string; description: string; imageAlt: string | null;
 };
 export const profile = profileData as Profile;
+export const profileLinks = [
+  { id: 'github', name: 'GitHub', url: profile.github },
+  ...(profile.linkedin ? [{ id: 'linkedin', name: 'LinkedIn', url: profile.linkedin }] : []),
+  ...linkData,
+];
 export const capabilities = capabilityData;
 export const projects: Project[] = projectData;
 export const certifications = certificationData as {

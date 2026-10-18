@@ -90,7 +90,7 @@ export default function ArticleDialog({
                   <a
                     href={href}
                     target={href?.startsWith("https://") ? "_blank" : undefined}
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                   >
                     {children}
                   </a>

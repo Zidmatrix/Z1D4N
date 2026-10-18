@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   ArrowDown,
   ArrowUpRight,
+  Box,
   Check,
   ChevronDown,
   Code2,
@@ -28,6 +29,7 @@ import {
   experience,
   journal,
   profile,
+  profileLinks,
   projects,
 } from "./content";
 import NetworkVisual from "./components/NetworkVisual";
@@ -40,7 +42,8 @@ const nav = [
   { id: "work", name: "Work" },
   { id: "about", name: "About" },
   { id: "capabilities", name: "Capabilities" },
-  { id: "credentials", name: "Credentials" },
+  { id: "certifications", name: "Certifications" },
+  { id: "links", name: "Links" },
   { id: "journal", name: "Journal" },
 ];
 const capabilityIcons = [Shield, Network, Cpu, Code2];
@@ -226,7 +229,7 @@ export default function App() {
                 className="button secondary"
                 href={profile.github}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 <Github size={18} /> GitHub <ArrowUpRight size={15} />
               </a>
@@ -276,8 +279,8 @@ export default function App() {
               <Languages size={17} />
               <span>English · {certifications.english.cefr}</span>
             </div>
-            <a href="#credentials">
-              View credentials <ArrowUpRight size={15} />
+            <a href="#certifications">
+              View certifications <ArrowUpRight size={15} />
             </a>
           </div>
         </div>
@@ -355,7 +358,7 @@ export default function App() {
                       <a
                         href={project.repository}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className="source-link"
                         aria-label={`View ${project.title} source`}
                       >
@@ -425,7 +428,7 @@ export default function App() {
                       <a
                         href={project.repository}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className="source-link"
                         aria-label={`Open ${project.title} repository`}
                       >
@@ -566,23 +569,48 @@ export default function App() {
         </section>
 
         <section
-          id="credentials"
+          id="certifications"
+          className="section container certifications-section"
+          aria-labelledby="certifications-title"
+        >
+          <span id="credentials" className="anchor-alias" aria-hidden="true" />
+          <div className="section-title">
+            <div>
+              <span className="eyebrow"><span>04</span> CERTIFICATIONS</span>
+              <h2 id="certifications-title">Certifications<span className="accent">.</span></h2>
+            </div>
+            <p>Security training and English proficiency.<br />Explore the original certificates.</p>
+          </div>
+          <div className="certificate-gallery">
+            {certifications.documents.map((document) => (
+              <DocumentPreview
+                key={document.id}
+                id={document.id}
+                src={asset(document.src)}
+                name={document.name}
+                label={document.label}
+                eyebrow={document.eyebrow}
+                kind={document.kind}
+                description={document.description}
+                imageAlt={document.imageAlt ?? undefined}
+                viewOnly
+              />
+            ))}
+          </div>
+        </section>
+
+        <section
+          id="qualifications"
           className="section credential-section"
-          aria-labelledby="credentials-title"
+          aria-labelledby="qualifications-title"
         >
           <div className="container">
             <div className="section-title">
               <div>
-                <span className="eyebrow">
-                  <span>04</span> CERTIFICATIONS & TRAINING
-                </span>
-                <h2 id="credentials-title">The foundations matter.</h2>
+                <span className="eyebrow"><span>05</span> FOUNDATIONS & TRAINING</span>
+                <h2 id="qualifications-title">The foundations matter.</h2>
               </div>
-              <p>
-                Security foundations and English proficiency.
-                <br />
-                Explore my certificates below.
-              </p>
+              <p>Professional exams, coursework and practice.<br />The background behind the documents.</p>
             </div>
             <div className="subsection-heading">
               <h3>Professional Certifications</h3>
@@ -614,7 +642,7 @@ export default function App() {
                       className="text-link"
                       href={cert.verification}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                     >
                       Issuer evidence <ArrowUpRight size={16} />
                     </a>
@@ -643,7 +671,7 @@ export default function App() {
                     <span className="micro">{training.evidence}</span>
                     {training.document && (
                       <a className="text-link" href={`#${training.document}`}>
-                        View certificate below <ArrowDown size={15} />
+                        View certificate <ArrowUpRight size={15} />
                       </a>
                     )}
                     {training.url && (
@@ -651,56 +679,13 @@ export default function App() {
                         className="text-link"
                         href={training.url}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                       >
                         View training evidence <ArrowUpRight size={15} />
                       </a>
                     )}
                   </div>
                 </details>
-              ))}
-            </div>
-            <section className="language-card" aria-labelledby="english-title">
-              <div className="language-copy">
-                <span className="micro">
-                  {certifications.english.provider} · ENGLISH PROFICIENCY
-                </span>
-                <h3 id="english-title">{certifications.english.level}</h3>
-                <p>
-                  {certifications.english.scope} · CEFR {certifications.english.cefr}
-                </p>
-                <a className="text-link" href={`#${certifications.english.document}`}>
-                  View English certificate <ArrowDown size={15} />
-                </a>
-              </div>
-              <dl className="language-scores">
-                <div>
-                  <dt>Overall</dt>
-                  <dd>{certifications.english.score}<span>/100</span></dd>
-                </div>
-                <div>
-                  <dt>Reading</dt>
-                  <dd>{certifications.english.reading}<span>/100</span></dd>
-                </div>
-                <div>
-                  <dt>Listening</dt>
-                  <dd>{certifications.english.listening}<span>/100</span></dd>
-                </div>
-              </dl>
-            </section>
-            <div className="credential-documents">
-              {certifications.documents.map((document) => (
-                <DocumentPreview
-                  key={document.id}
-                  id={document.id}
-                  src={asset(document.src)}
-                  name={document.name}
-                  label={document.label}
-                  eyebrow={document.eyebrow}
-                  kind={document.kind}
-                  description={document.description}
-                  imageAlt={document.imageAlt ?? undefined}
-                />
               ))}
             </div>
           </div>
@@ -714,7 +699,7 @@ export default function App() {
           <div className="section-title">
             <div>
               <span className="eyebrow">
-                <span>05</span> EXPERIENCE & EDUCATION
+                <span>06</span> EXPERIENCE & EDUCATION
               </span>
               <h2 id="experience-title">A practice in progress.</h2>
             </div>
@@ -776,6 +761,28 @@ export default function App() {
           </div>
         </section>
 
+        <section id="links" className="section container links-section" aria-labelledby="links-title">
+          <div className="section-title">
+            <div>
+              <span className="eyebrow"><span>07</span> AROUND THE WEB</span>
+              <h2 id="links-title">Links<span className="accent">.</span></h2>
+            </div>
+            <p>Find me on the platforms I use.</p>
+          </div>
+          <div className="profile-link-grid">
+            {profileLinks.map((link) => {
+              const Icon = link.id === "github" ? Github : link.id === "hackthebox" ? Box : Shield;
+              return (
+                <a key={link.id} className="profile-link-card" href={link.url} target="_blank" rel="noopener noreferrer">
+                  <span className="profile-link-icon" aria-hidden="true"><Icon size={26} strokeWidth={1.5} /></span>
+                  <span className="profile-link-name">{link.name}</span>
+                  <ArrowUpRight size={20} className="profile-link-arrow" aria-hidden="true" />
+                </a>
+              );
+            })}
+          </div>
+        </section>
+
         <section
           id="journal"
           className="section journal-section"
@@ -785,7 +792,7 @@ export default function App() {
             <div className="section-title">
               <div>
                 <span className="eyebrow">
-                  <span>06</span> LEARNING JOURNAL
+                  <span>08</span> LEARNING JOURNAL
                 </span>
                 <h2 id="journal-title">Keep the thinking visible.</h2>
               </div>
@@ -839,7 +846,7 @@ export default function App() {
         >
           <div className="contact-main">
             <span className="eyebrow">
-              <span>07</span> START A CONVERSATION
+              <span>09</span> START A CONVERSATION
             </span>
             <h2 id="contact-title">
               Good work starts
@@ -868,7 +875,7 @@ export default function App() {
                 className="text-link"
                 href={profile.github}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 <Github size={17} /> GitHub <ArrowUpRight size={15} />
               </a>
@@ -877,7 +884,7 @@ export default function App() {
                   className="text-link"
                   href={profile.linkedin}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   LinkedIn <ArrowUpRight size={15} />
                 </a>

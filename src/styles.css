@@ -262,17 +262,29 @@
   .training-detail > .micro { font-size: 9px; }
   .training-detail > .text-link { display: flex; width: fit-content; margin-top: 12px; }
   .cert-preview-link { margin-top: 15px; font-size: 11px; }
-  .language-card { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 28px; margin-top: 48px; padding: 30px; border: 1px solid #36524f; border-radius: 8px; background: linear-gradient(120deg, #13252a, #111822); }
-  .language-copy { min-width: 0; }
-  .language-copy h3 { margin-top: 8px; color: var(--accent); font-size: 32px; }
-  .language-copy > p { margin-top: 8px; font-size: 12px; }
-  .language-copy > a { margin-top: 16px; font-size: 11px; }
-  .language-scores { display: flex; flex-wrap: wrap; gap: 28px; margin: 0; }
-  .language-scores dt { font-size: 11px; color: var(--muted); }
-  .language-scores dd { margin: 5px 0 0; font-family: var(--display); font-size: 34px; line-height: 1.3; }
-  .language-scores dd > span { font-family: var(--body); font-size: 12px; color: var(--muted); margin-left: 4px; }
-  .credential-documents { display: grid; gap: 48px; margin-top: 48px; }
-  .credential-documents > .cv-preview { margin-top: 0; }
+  .certifications-section { position: relative; }
+  .anchor-alias { position: absolute; top: 0; left: 0; }
+  .certificate-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+  .certificate-gallery > .certificate-preview { display: flex; flex-direction: column; min-width: 0; margin-top: 0; padding: 24px; border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(145deg, #121e28, #101620 65%); }
+  .certificate-preview .cv-heading { width: 100%; min-height: 76px; flex-wrap: wrap; align-items: flex-start; gap: 12px; margin: 0 0 14px; }
+  .certificate-preview .cv-heading-label { align-items: flex-start; flex: 1 1 210px; }
+  .certificate-preview .cv-heading h3 { font-size: 22px; line-height: 1.3; }
+  .certificate-preview .cv-heading .micro { font-size: 8px; letter-spacing: 1.2px; }
+  .certificate-preview .cv-document-icon { width: 40px; height: 46px; }
+  .document-view-only { display: inline-flex; align-items: center; gap: 5px; padding: 5px 9px; border: 1px solid #36524f; border-radius: 20px; font-size: 9px; color: var(--accent); white-space: nowrap; }
+  .certificate-preview .document-description { width: 100%; min-height: 70px; margin: 0 0 20px; font-size: 11px; }
+  .certificate-preview .cv-frame { width: 100%; margin: auto 0 0; padding: 7px; }
+  .certificate-preview .cv-viewport { height: 420px; max-height: 65svh; padding: 10px; }
+  .certificate-preview .cv-toolbar { padding: 4px 1px 12px; gap: 6px; }
+  .certificate-preview .cv-zoom button { padding: 8px; font-size: 10px; }
+  .certificate-preview .cv-zoom .icon-button { width: 32px; }
+  .certificate-preview .cv-page-count { font-size: 9px; }
+  .profile-link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 20px; }
+  .profile-link-card { display: flex; align-items: center; gap: 18px; min-width: 0; min-height: 140px; padding: 28px; border: 1px solid var(--line); border-radius: 9px; background: #111822; transition: border-color .2s, background .2s; }
+  .profile-link-card:hover { border-color: #467b70; background: #132329; }
+  .profile-link-icon { color: var(--accent); flex-shrink: 0; }
+  .profile-link-name { font-family: var(--display); font-size: 24px; line-height: 1.3; overflow-wrap: anywhere; }
+  .profile-link-arrow { color: var(--quiet); margin-left: auto; flex-shrink: 0; }
   .document-description { max-width: 980px; margin: -8px auto 20px; font-size: 12px; line-height: 1.9; }
   .cv-image-page > img { display: block; width: 100%; height: auto; }
   .experience-item { padding: 27px 0; border-bottom: 1px solid var(--line); display: flex; align-items: flex-start; gap: 26px; }
@@ -395,6 +407,9 @@
     .contact-mark { font-size: 150px; letter-spacing: -22px; }
   }
   @media (max-width: 860px) {
+    .certificate-gallery { grid-template-columns: 1fr; }
+    .certificate-preview .cv-heading { min-height: 0; }
+    .certificate-preview .document-description { min-height: 0; }
     .header-inner { height: 74px; }
     .menu-toggle { display: flex; }
     .main-nav { display: none; }
@@ -514,11 +529,11 @@
     .training-detail { padding-left: 0; }
     .training-detail > p { font-size: 12px; }
     .training-heading { margin-top: 40px; }
-    .language-card { padding: 22px; gap: 24px; }
-    .language-copy h3 { font-size: 28px; }
-    .language-scores { gap: 20px; }
-    .language-scores dd { font-size: 28px; }
-    .credential-documents { gap: 36px; margin-top: 36px; }
+    .certificate-gallery { gap: 22px; }
+    .certificate-gallery > .certificate-preview { padding: 18px; }
+    .certificate-preview .cv-heading-label { flex-basis: 190px; }
+    .profile-link-card { min-height: 100px; padding: 23px; }
+    .profile-link-name { font-size: 22px; }
     .document-description { font-size: 11px; }
     .experience-item { gap: 17px; }
     .experience-item h3 { font-size: 21px; }
